@@ -1,0 +1,19 @@
+<%@ page pageEncoding="UTF-8" %>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.jsp">PersonalTech</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class=""><a href="index.jsp"><img src="../images/thumbnails/ball_thumbnail.png"/></a></li>
+            <li><a href="sobre.jsp">Sobre nós</a></li>
+            <li><a href="contato.jsp">Contato</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="cadastro.jsp"><span class="glyphicon glyphicon-user"></span> Inscreva-se</a></li>
+            <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="index.jsp"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+    </div>
+</nav> 
+<br/><br/><br/>
