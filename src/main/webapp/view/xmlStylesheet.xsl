@@ -7,7 +7,7 @@
             <label class="control-label col-sm-2" for="estado">Estado: </label>
             <div class="col-sm-10">
                 <select class="form-control">
-                    <option> -- select an option -- </option>
+                    <option>-- Escolha uma opção --</option>
                     <xsl:for-each select="//estado">
                         <xsl:sort select="@name" order="ascending"/>
                         <option value="{@id}">

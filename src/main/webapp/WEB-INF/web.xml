@@ -4,9 +4,17 @@
         <servlet-name>UsuarioController</servlet-name>
         <servlet-class>com.mycompany.personaltech.controller.UsuarioController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CadastroUsuario</servlet-name>
+        <servlet-class>com.mycompany.personaltech.controller.CadastroUsuario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsuarioController</servlet-name>
         <url-pattern>/UsuarioController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastroUsuario</servlet-name>
+        <url-pattern>/CadastroUsuario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
