@@ -96,7 +96,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="logradouro">Logradouro: </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" required name="logradouro" id="logradouro" placeholder="Insira logradouro">
+                        <input type="text" class="form-control" required name="logradouro" id="logradouro" placeholder="Insira logradouro">
                 </div>
             </div>
 
