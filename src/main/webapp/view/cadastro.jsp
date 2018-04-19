@@ -12,26 +12,27 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="nome">Nome:</label>
                 <div class="col-sm-10">
-                    <input onfocusout="verificaNome()" required type="text" class="form-control" id="nome" placeholder="Insira nome" name="nome">
+                    <input required type="text" class="form-control" id="nome" placeholder="Insira nome" name="nome">
+                    <span id="msgNome"/>
                 </div>
-                <span id="erroNome"/>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="sobrenome">Sobrenome:</label>
                 <div class="col-sm-10">
-                    <input onfocusout="verificaSobrenome()" required type="text" class="form-control" id="sobrenome" placeholder="Insira sobrenome" name="sobrenome">
+                    <input required type="text" class="form-control" id="sobrenome" placeholder="Insira sobrenome" name="sobrenome">
+                    <span id="msgSobrenome"/>
                 </div>
-                <span id="erroSobrenome"/>
             </div>
 
             <div class="form-group">
                 <label class="control-label col-sm-2" for="sexo">Sexo:</label>
                 <div class="col-sm-10">
                     <select class="form-control" id="sexo" name="sexo" required>
-                        <option selected>-- Escolha um sexo --</option>
+                        <option selected value="">-- Escolha um sexo --</option>
                         <option value="M">Masculino</option>
                         <option value="F">Feminino</option>
                     </select>
+                    <span id="msgSexo"/>
                 </div>
             </div>
 
@@ -39,6 +40,7 @@
                 <label class="control-label col-sm-2" for="email">CPF:</label>
                 <div class="col-sm-10">
                     <input type="txet" class="form-control" id="cpf" placeholder="Insira CPF" name="cpf" required>
+                    <span id="msgCpf"/>
                 </div>
             </div>
 
@@ -46,10 +48,11 @@
                 <label for="tipoUsuarioCad" class="control-label col-sm-2">Tipo de usuário: </label>
                 <div class="col-sm-10">
                     <select class="form-control" id="tipoUsuarioCad" name="tipoUsuario" required>
-                        <option selected>-- Escolha o tipo de usuário--</option>
+                        <option selected value="">-- Escolha o tipo de usuário--</option>
                         <option value="P">Personal Trainer</option>
                         <option value="A">Aluno</option>
                     </select>
+                    <span id="msgTipoUsuario"/>
                 </div>
             </div>
 
@@ -57,6 +60,7 @@
                 <label class="control-label col-sm-2" for="dataNascimento">Data de nascimento: </label>
                 <div class="col-sm-10">
                     <input type="date" required class="form-control" id="dataNascimento" name="dataNascimento" placeholder="Personal ou Aluno">
+                    <span id="msgDataNascimento"/>
                 </div>
             </div>
 
@@ -82,9 +86,10 @@
             </div>
 
             <div class="form-group">
-                <label class="control-label col-sm-2" for="senha2">Senha: </label>
+                <label class="control-label col-sm-2" for="confirmarSenha">Confirmar senha: </label>
                 <div class="col-sm-10">
-                    <input onfocusout="verificaSenha()" required type="password" class="form-control" id="senha2" placeholder="Confirme a senha" name="senha2">
+                    <input required type="password" class="form-control" id="confirmarSenha" placeholder="Confirme a senha" name="confirmarSenha">
+                    <span id="msgConfirmarSenha"/>
                 </div>
                 <span id='erroSenha'/>
             </div>
@@ -129,12 +134,17 @@
                 </div>
             </div>
 
-            <div id="estado" required></div>
-            
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="cidade">Cidade: </label>
+            <div id="uf" class="form-group">
+                <label class="control-label col-sm-2">Estados: </label> 
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" required id="cidade" name="cidade" placeholder="Insira o nome da cidade">
+                    <select class="form-control" name="estado" required></select>
+                </div>
+            </div>
+
+            <div id="uf" class="form-group">
+                <label class="control-label col-sm-2">Cidades </label> 
+                <div class="col-sm-10">
+                    <select class="form-control" name="cidade"></select>
                 </div>
             </div>
 

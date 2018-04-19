@@ -17,12 +17,12 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                <label for="Login">Login:</label>
+                <input type="text" class="form-control" id="email" placeholder="Enter login" name="login" value="bino">
             </div>
             <div class="form-group">
                 <label for="pwd">Senha:</label>
-                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password" value="123">
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>

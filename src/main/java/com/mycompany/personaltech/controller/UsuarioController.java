@@ -27,29 +27,16 @@ public class UsuarioController extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
 
-        String email = request.getParameter("email");
+        String login = request.getParameter("login");
         String password = request.getParameter("password");
 
-        try (PrintWriter out = response.getWriter()) {
-            if (email.equals("victor@gmail.com") && password.equals("123")) {
+        if (login.equals("bino") && password.equals("123")) {
+            response.sendRedirect("view/index.jsp");
 
-                /* TODO output your page here. You may use following sample code. */
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>Servlet NewServlet</title>");
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>Servlet NewServlet at " + email + " - " + password + "</h1>");
-                out.println("</body>");
-                out.println("</html>");
-
-                response.sendRedirect("view/index.jsp");
-
-            } else {
-                response.sendRedirect("view/login.jsp");
-            }
+        } else {
+            response.sendRedirect("view/welcome.jsp");
         }
+
     }
 
     @Override
