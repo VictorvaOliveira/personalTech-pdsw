@@ -32,7 +32,7 @@ public class DbUnitUtil {
         IDatabaseConnection db_conn = null;
         try {
             conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/PERSONALTECH_PDSW?zeroDateTimeBehavior=convertToNull", "root", "root");
+                    "jdbc:mysql://localhost:3306/PERSONALTECH_PDSW", "root", "root");
             db_conn = new DatabaseConnection(conn, "PERSONALTECH_PDSW"); // não e nome do PU é o nome do DATABASE
             DatabaseConfig dbConfig = db_conn.getConfig();
             dbConfig.setProperty(DatabaseConfig.PROPERTY_DATATYPE_FACTORY, new MySqlDataTypeFactory());

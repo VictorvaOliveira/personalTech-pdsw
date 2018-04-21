@@ -1,14 +1,12 @@
 package com.mycompany.tests;
 
-import com.mycompany.persoanaltech.entities.Aluno;
-import java.util.Calendar;
+import com.mycompany.personaltech.entities.Aluno;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -30,7 +28,7 @@ public class AlunoTest {
     public static void setUpClass() {
         logger = Logger.getGlobal();
         logger.setLevel(Level.INFO);
-        emf = Persistence.createEntityManagerFactory("com.mycompany_PersonalTech_pdsw_war_1.0-SNAPSHOTPU");
+        emf = Persistence.createEntityManagerFactory("PTech_PU");
         DbUnitUtil.inserirDados();
     }
 
@@ -70,8 +68,8 @@ public class AlunoTest {
 
     @Test
     public void inserirAluno_01() {
-        Aluno aluno = new Aluno();
-        aluno.setNome("KELLY");
+//        Aluno aluno = new Aluno();
+//        aluno.setNome("KELLY");
 //        aluno.setSobrenome("GÜIÇA");
 //        aluno.setCpf("123-321-416-13");
 //        aluno.setLogin("KELLY");
@@ -95,7 +93,7 @@ public class AlunoTest {
 //
 //        aluno.setEndereco(end);
 //
-        em.persist(aluno);
+//        em.persist(aluno);
 //
 //        em.flush();
 //        assertNotNull(aluno.getId());
