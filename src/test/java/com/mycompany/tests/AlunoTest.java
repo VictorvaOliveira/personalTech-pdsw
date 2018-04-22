@@ -1,6 +1,7 @@
 package com.mycompany.tests;
 
 import com.mycompany.personaltech.entities.Aluno;
+import com.mycompany.personaltech.entities.PersonalTrainer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
@@ -67,6 +68,24 @@ public class AlunoTest {
     }
 
     @Test
+    public void TEST_01() {
+//        PersonalTrainer pt = em.find(PersonalTrainer.class, (long) 1);
+//        Aluno aluno = pt.getAlunos().get(0);
+//        pt.removeAluno(aluno);
+//        assertTrue(pt.getAlunos().isEmpty());
+    }
+
+    @Test
+    public void TEST_02() {
+//        PersonalTrainer pt = em.find(PersonalTrainer.class, (long) 1);
+//        em.remove(pt);
+//        em.flush();
+//        em.clear();
+//        PersonalTrainer pt2 = em.find(PersonalTrainer.class, (long) 1);
+//        assertNull(pt2);
+    }
+
+    @Test
     public void inserirAluno_01() {
 //        Aluno aluno = new Aluno();
 //        aluno.setNome("KELLY");
@@ -97,7 +116,6 @@ public class AlunoTest {
 //
 //        em.flush();
 //        assertNotNull(aluno.getId());
-
     }
 //
 //    @Test

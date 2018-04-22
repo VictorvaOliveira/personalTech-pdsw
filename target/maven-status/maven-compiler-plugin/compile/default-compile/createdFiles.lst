@@ -6,7 +6,10 @@ org/json/JSONObject.class
 com/mycompany/personaltech/controller/UsuarioController.class
 org/json/JSONWriter.class
 org/json/JSONObject$1.class
+com/mycompany/personaltech/models/AlunoDAO.class
 org/json/JSONArray.class
+com/mycompany/personaltech/models/JPAUtil.class
+com/mycompany/personaltech/listeners/NewServletListener.class
 org/json/JSONString.class
 org/json/JSONStringer.class
 org/json/JSONObject$Null.class

@@ -7,6 +7,7 @@
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/entities/Endereco.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/entities/Aluno.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/entities/PersonalTrainer.java
+/home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/models/AlunoDAO.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/controller/CadastroUsuario.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/JSONString.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/HTTP.java
@@ -15,7 +16,9 @@
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/XMLTokener.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/controller/UsuarioController.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/CookieList.java
+/home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/listeners/NewServletListener.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/JSONWriter.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/JSONObject.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/Cookie.java
+/home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/models/JPAUtil.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/HTTPTokener.java
