@@ -5,6 +5,7 @@
  */
 package com.mycompany.personaltech.controller;
 
+import com.mycompany.personaltech.entities.Aluno;
 import com.mycompany.personaltech.entities.PersonalTrainer;
 import com.mycompany.personaltech.models.LoginPersonalModel;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.servlet.ServletException;
@@ -62,10 +64,20 @@ public class LoginController extends HttpServlet {
             String jpql = "SELECT p FROM PersonalTrainer p where p.login = ?1";
             Query query = em.createQuery(jpql);
             query.setParameter(1, login);
-            PersonalTrainer pt = (PersonalTrainer) query.getSingleResult();
-            et.commit();
-            em.close();
-            emf.close(); 
+            PersonalTrainer pt = null;
+            try {
+                pt = (PersonalTrainer) query.getSingleResult();
+                if (!senha.equals(pt.getSenha())) {
+                    response.sendRedirect("view/wronglogin.jsp");
+                } else if (senha.equals(pt.getSenha())) {
+                    response.sendRedirect("view/welcomep.jsp");
+                }
+            } catch (NoResultException e) {
+                commitAndClose();
+                response.sendRedirect("view/wronglogin.jsp");
+                return;
+            }
+            commitAndClose();
             if (pt != null) {
                 try (PrintWriter out = response.getWriter()) {
                     out.println("<!DOCTYPE html>");
@@ -74,18 +86,54 @@ public class LoginController extends HttpServlet {
                     out.println("<title>Servlet LoginController</title>");
                     out.println("</head>");
                     out.println("<body>");
-                    out.println("<h1>Servlet LoginController at " + pt.getLogin() + "</h1>");
+                    out.println("<h1>Servlet LoginController at " + pt.getNome() + "</h1>");
                     out.println("</body>");
                     out.println("</html>");
                 }
             }
         } else if (tipo.equals("A")) {
-
+            String jpql = "SELECT a FROM Aluno a where a.login = ?1";
+            Query query = em.createQuery(jpql);
+            query.setParameter(1, login);
+            Aluno aluno = null;
+            try {
+                aluno = (Aluno) query.getSingleResult();
+                if (!senha.equals(aluno.getSenha())) {
+                    response.sendRedirect("view/wronglogin.jsp");
+                } else if (senha.equals(aluno.getSenha())) {
+                    response.sendRedirect("view/welcomea.jsp");
+                }
+            } catch (NoResultException e) {
+                commitAndClose();
+                response.sendRedirect("view/wronglogin.jsp");
+                return;
+            }
+            commitAndClose();
+            if (aluno != null) {
+                try (PrintWriter out = response.getWriter()) {
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html>");
+                    out.println("<head>");
+                    out.println("<title>Servlet LoginController</title>");
+                    out.println("</head>");
+                    out.println("<body>");
+                    out.println("<h1>Servlet LoginController at " + aluno.getNome() + "</h1>");
+                    out.println("</body>");
+                    out.println("</html>");
+                }
+            }
+        } else {
+            response.sendRedirect("view/login.jsp");
         }
 
-        LoginPersonalModel lpm = new LoginPersonalModel();
+//        LoginPersonalModel lpm = new LoginPersonalModel();
 //        boolean bool = lpm.verificarLogin(login, senha, tipo);
+    }
 
+    void commitAndClose() {
+        et.commit();
+        em.close();
+        emf.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
