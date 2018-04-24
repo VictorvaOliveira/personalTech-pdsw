@@ -5,7 +5,7 @@
     <xsl:template match="/">
         <xsl:for-each select="//estado[@id=$uf]/cidade">
             <xsl:sort select="." />
-            <option value="{@codigo}"><xsl:value-of select="@name" /></option>
+            <option value="{@name}"><xsl:value-of select="@name" /></option>
         </xsl:for-each>
     </xsl:template>
 

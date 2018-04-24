@@ -7,10 +7,10 @@
     <%@ include file="navbar.jspf" %>
     <div class="container">
         <h2>PersonalTech</h2>
-        <form action="../UsuarioController" method="post">
+        <form action="../LoginController" method="post">
             <div class="form-group">
                 <label for="tipoUsuarioLogin">Tipo de usuário: </label>
-                <select class="form-control" id="tipoUsuarioLogin">
+                <select class="form-control" id="tipoUsuarioLogin" name="tipoUsuarioLogin">
                     <option selected>-- Escolha o tipo de usuário--</option>
                     <option value="P">Personal Trainer</option>
                     <option value="A">Aluno</option>
@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
                 <label for="pwd">Senha:</label>
-                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password" value="123">
+                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="senha" value="123">
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>

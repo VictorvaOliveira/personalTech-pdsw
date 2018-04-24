@@ -16,12 +16,10 @@ import javax.persistence.Persistence;
  */
 public class JPAUtil {
 
-    private static EntityManagerFactory emf;
-    private EntityManager em;
-    private EntityTransaction et;
+    
 
     public JPAUtil() {
-        emf = Persistence.createEntityManagerFactory("PTech_PU");
-        em = emf.createEntityManager();
-    }
+       
+    }   
+    
 }

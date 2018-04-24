@@ -1,16 +1,20 @@
 package com.mycompany.personaltech.entities;
 
 import com.mycompany.personaltech.entities.Endereco;
+import com.mycompany.personaltech.entities.Exercicio;
 import java.util.Date;
 import javax.annotation.Generated;
+import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-04-21T20:41:11")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-04-24T12:12:32")
 @StaticMetamodel(Aluno.class)
 public class Aluno_ { 
 
+    public static volatile ListAttribute<Aluno, Exercicio> exercicios;
     public static volatile SingularAttribute<Aluno, String> senha;
+    public static volatile SingularAttribute<Aluno, String> tipo;
     public static volatile SingularAttribute<Aluno, Endereco> endereco;
     public static volatile SingularAttribute<Aluno, String> cpf;
     public static volatile SingularAttribute<Aluno, String> nome;

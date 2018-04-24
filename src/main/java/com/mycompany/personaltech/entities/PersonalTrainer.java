@@ -31,25 +31,35 @@ import javax.persistence.TemporalType;
 @Table(name = "TB_PERSONAL")
 public class PersonalTrainer implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+//    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
     @Column(name = "TXT_NOME", length = 255, nullable = false)
     private String nome;
+    
     @Column(name = "TXT_SOBRENOME", length = 255, nullable = false)
     private String sobrenome;
+    
     @Column(name = "TXT_CPF", length = 14, unique = true, nullable = false)
     private String cpf;
+    
     @Column(name = "TXT_LOGIN", length = 50, unique = true, nullable = false)
     private String login;
+    
     @Column(name = "TXT_SENHA", length = 20, nullable = false)
     private String senha;
+    
     @Column(name = "TXT_EMAIL", length = 50, nullable = false)
     private String email;
+    
     @Column(name = "TXT_SEXO", length = 1, nullable = false)
     private String sexo;
+    
+    @Column(name = "TXT_TIPO_USER", length = 1, nullable = false)
+    private String tipo;
+    
     @Temporal(TemporalType.DATE)
     @Column(name = "DT_NASCIMENTO", nullable = true)
     private Date dataNascimento;
@@ -68,6 +78,7 @@ public class PersonalTrainer implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+    
 
     public String getNome() {
         return nome;
@@ -145,9 +156,11 @@ public class PersonalTrainer implements Serializable {
         return alunos;
     }
 
-    public void setAlunos(Aluno aluno) {
-        addAluno(aluno);
+    public void setAlunos(List<Aluno> alunos) {
+        this.alunos = alunos;
     }
+
+    
     
     public void addAluno(Aluno aluno) {
         if (this.alunos == null) {
@@ -162,6 +175,15 @@ public class PersonalTrainer implements Serializable {
         }
         this.alunos.remove(aluno);
     }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
 
     @Override
     public int hashCode() {

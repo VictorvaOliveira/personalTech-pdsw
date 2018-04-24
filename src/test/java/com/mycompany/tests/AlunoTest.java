@@ -1,13 +1,17 @@
 package com.mycompany.tests;
 
 import com.mycompany.personaltech.entities.Aluno;
+import com.mycompany.personaltech.entities.Endereco;
+import com.mycompany.personaltech.entities.Exercicio;
 import com.mycompany.personaltech.entities.PersonalTrainer;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -69,55 +73,83 @@ public class AlunoTest {
 
     @Test
     public void TEST_01() {
-//        PersonalTrainer pt = em.find(PersonalTrainer.class, (long) 1);
-//        Aluno aluno = pt.getAlunos().get(0);
-//        pt.removeAluno(aluno);
-//        assertTrue(pt.getAlunos().isEmpty());
+        PersonalTrainer pt = em.find(PersonalTrainer.class, (long) 1);
+        int size = pt.getAlunos().size();
+        Aluno aluno = pt.getAlunos().get(0);
+        pt.removeAluno(aluno);
+        int sizeMinusOne = pt.getAlunos().size();
+        assertTrue(sizeMinusOne < size);
     }
 
     @Test
     public void TEST_02() {
-//        PersonalTrainer pt = em.find(PersonalTrainer.class, (long) 1);
-//        em.remove(pt);
-//        em.flush();
-//        em.clear();
-//        PersonalTrainer pt2 = em.find(PersonalTrainer.class, (long) 1);
-//        assertNull(pt2);
+        PersonalTrainer pt = em.find(PersonalTrainer.class, (long) 2);
+        em.remove(pt);
+        em.flush();
+        em.clear();
+        PersonalTrainer pt2 = em.find(PersonalTrainer.class, (long) 2);
+        assertNull(pt2);
+    }
+
+    @Test
+    public void TEST_03() {
+        String jpql = "SELECT p FROM PersonalTrainer p where p.login = ?1";
+        Query query = em.createQuery(jpql);
+        query.setParameter(1, "CB");
+        PersonalTrainer pt = (PersonalTrainer) query.getSingleResult();
+        assertEquals("CB", pt.getLogin());
     }
 
     @Test
     public void inserirAluno_01() {
-//        Aluno aluno = new Aluno();
-//        aluno.setNome("KELLY");
-//        aluno.setSobrenome("GÜIÇA");
-//        aluno.setCpf("123-321-416-13");
-//        aluno.setLogin("KELLY");
-//        aluno.setSenha("123");
-//        aluno.setEmail("KELLY@gmail");
-//        aluno.setSexo("F");
+        Aluno aluno = new Aluno();
+        aluno.setNome("ZECA");
+        aluno.setSobrenome("CAMARGO");
+        aluno.setCpf("23454321123");
+        aluno.setTipo("A");
+        aluno.setLogin("ZECA");
+        aluno.setSenha("ABC");
+        aluno.setEmail("ZECAM@RGO");
+        aluno.setSexo("M");
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, 2000);
+        cal.set(Calendar.MONTH, Calendar.JANUARY);
+        cal.set(Calendar.DAY_OF_MONTH, 10);
+        aluno.setDataNascimento(cal.getTime());
 
-//        Calendar c = Calendar.getInstance();
-//        c.set(Calendar.YEAR, 2000);
-//        c.set(Calendar.MONTH, Calendar.AUGUST);
-//        c.set(Calendar.DAY_OF_MONTH, 27);
-//        aluno.setDataNascimento(c.getTime());
+        Endereco end = new Endereco();
+        end.setLogradouro("RUA DO CORDEIRO");
+        end.setBairro("CORDEIRO");
+        end.setNumero(666);
+        end.setCep("123456-88");
+        end.setCidade("RECIFE");
+        end.setEstado("PERNAMBUCO");
 //
-//        Endereco end = new Endereco();
-//        end.setLogradouro("RUA DO CORDEIRO");
-//        end.setBairro("CORDEIRO");
-//        end.setNumero(666);
-//        end.setCep("123456-88");
-//        end.setCidade("RECIFE");
-//        end.setEstado("PERNAMBUCO");
+        aluno.setEndereco(end);
+        PersonalTrainer pt = em.find(PersonalTrainer.class, (long) 1);
+        pt.addAluno(aluno);
+        em.persist(aluno);
 //
-//        aluno.setEndereco(end);
-//
-//        em.persist(aluno);
-//
-//        em.flush();
-//        assertNotNull(aluno.getId());
+        em.flush();
+        assertNotNull(aluno.getId());
     }
-//
+
+    @Test
+    public void inserirAluno_03() {
+        String jpql = "SELECT a FROM Aluno a where a.login = ?1";
+        Query query = em.createQuery(jpql);
+        query.setParameter(1, "ALAN");
+        Aluno aluno = (Aluno) query.getSingleResult();
+        
+        Exercicio ex = new Exercicio();
+        ex.setTipo("ABD");
+        ex.setExercicio("ABD_MALUCO");
+        
+        aluno.addExercicio(ex);
+        assertEquals("ALAN", aluno.getLogin());
+        
+    }
+
 //    @Test
 //    public void inserirAluno_02() {
 //        Aluno aluno = new Aluno();
@@ -232,4 +264,4 @@ public class AlunoTest {
 //
 //        assertTrue(alunos == 30);
 //    }
-}
+    }

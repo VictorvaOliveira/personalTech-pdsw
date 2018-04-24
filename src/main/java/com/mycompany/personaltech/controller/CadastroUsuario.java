@@ -4,6 +4,8 @@ import com.mycompany.personaltech.entities.Aluno;
 import com.mycompany.personaltech.entities.Endereco;
 import com.mycompany.personaltech.entities.PersonalTrainer;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -29,6 +31,13 @@ public class CadastroUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String dataNascimento = request.getParameter("dataNascimento");
+        Date date = new Date();
+        try {
+            date = new SimpleDateFormat("yyyy-MM-dd").parse(dataNascimento);
+        } catch (ParseException ex) {
+            Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         emf = Persistence.createEntityManagerFactory("PTech_PU");
         em = emf.createEntityManager();
@@ -43,10 +52,11 @@ public class CadastroUsuario extends HttpServlet {
         aluno.setSenha("abc123");
         aluno.setEmail("JOAO@GMAIL");
         aluno.setSexo("M");
+        aluno.setTipo("A");
         aluno.setDataNascimento(setDataNascimentoAluno(aluno));
         aluno.setEndereco(setEnderecoAluno());
         PersonalTrainer pt = em.find(PersonalTrainer.class, (long) 1);
-        pt.setAlunos(aluno);
+        pt.addAluno(aluno);
         em.persist(aluno);
 
         commitTransaction();

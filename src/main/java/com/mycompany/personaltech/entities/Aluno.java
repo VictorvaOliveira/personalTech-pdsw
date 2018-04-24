@@ -6,13 +6,19 @@
 package com.mycompany.personaltech.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,7 +31,7 @@ import javax.persistence.TemporalType;
 @Table(name = "TB_ALUNO")
 public class Aluno implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+//    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -44,12 +50,19 @@ public class Aluno implements Serializable {
     private String email;
     @Column(name = "TXT_SEXO", length = 1, nullable = false)
     private String sexo;
+    @Column(name = "TXT_TIPO_USER", length = 1, nullable = false)
+    private String tipo;
     @Temporal(TemporalType.DATE)
     @Column(name = "DT_NASCIMENTO", nullable = true)
     private Date dataNascimento;
 
     @Embedded
     private Endereco endereco;
+    
+    @OneToMany(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "ID_ALUNO", referencedColumnName = "ID")
+    private List<Exercicio> exercicios;
 
     public Long getId() {
         return id;
@@ -131,6 +144,36 @@ public class Aluno implements Serializable {
         this.dataNascimento = dataNascimento;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public List<Exercicio> getExercicios() {
+        return exercicios;
+    }
+
+    public void setExercicios(List<Exercicio> exercicios) {
+        this.exercicios = exercicios;
+    }
+    
+    public void addExercicio(Exercicio ex) {
+        if (this.exercicios == null) {
+            this.exercicios = new ArrayList<>();
+        }
+        this.exercicios.add(ex);
+    }
+    
+    public void remExercicio(Exercicio ex) {
+        if (this.exercicios == null) {
+            return;
+        }
+        this.exercicios.remove(ex);
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -154,6 +197,11 @@ public class Aluno implements Serializable {
     @Override
     public String toString() {
         return "com.mycompany.persoanaltech.entities.Aluno[ id=" + id + " ]";
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        Date date = new Date();
+        // TODO
     }
 
 }
