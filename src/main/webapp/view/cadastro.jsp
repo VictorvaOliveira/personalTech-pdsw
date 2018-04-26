@@ -43,7 +43,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" id="AorP">
                 <label for="tipoUsuarioCad" class="control-label col-sm-2">Tipo de usuário: </label>
                 <div class="col-sm-10">
                     <select class="form-control" id="tipoUsuarioCad" name="tipoUsuario" required>
@@ -70,7 +70,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" id="ifPersonal">
                 <label class="control-label col-sm-2" for="loginPersonal">Login do Personal: </label>
                 <div class="col-sm-10">
                     <input type="text" required class="form-control" id="loginPersonal" placeholder="Escreva um login único" name="loginPersonal"/>

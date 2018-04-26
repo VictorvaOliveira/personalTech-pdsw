@@ -62,6 +62,15 @@ function mostrarErros() {
 
 }
 
+function getValueAorP() {
+    var tipoUsuario = document.querySelector("#tipoUsuarioCad").value;
+    if (tipoUsuario == "P") {
+        document.querySelector("#ifPersonal").style.display = "none";
+    } else if (tipoUsuario == "A") {
+        document.querySelector("#ifPersonal").style.display = "block";
+    }
+}
+
 function validar() {
     xhr.open("post", "../ValidacaoController");
     xhr.onreadystatechange = mostrarErros;
@@ -82,6 +91,8 @@ function registerEvents() {
     xhr.onreadystatechange = preencher;
     xhr.send();
     document.getElementsByName("estado")[0].onchange = preencherCidades;
+    
+    var elem = document.querySelector("#tipoUsuarioCad").addEventListener("blur", getValueAorP);
 }
 
 onload = registerEvents;
