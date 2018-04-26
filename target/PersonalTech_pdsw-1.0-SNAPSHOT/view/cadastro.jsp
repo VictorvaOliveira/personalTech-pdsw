@@ -73,7 +73,7 @@
             <div class="form-group" id="ifPersonal">
                 <label class="control-label col-sm-2" for="loginPersonal">Login do Personal: </label>
                 <div class="col-sm-10">
-                    <input type="text" required class="form-control" id="loginPersonal" placeholder="Escreva um login único" name="loginPersonal"/>
+                    <input type="text" class="form-control" id="loginPersonal" placeholder="Escreva um login único" name="loginPersonal"/>
                 </div>
             </div>
             

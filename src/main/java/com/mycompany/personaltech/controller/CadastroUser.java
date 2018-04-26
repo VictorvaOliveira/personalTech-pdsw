@@ -9,16 +9,15 @@ import com.mycompany.personaltech.entities.Aluno;
 import com.mycompany.personaltech.entities.Endereco;
 import com.mycompany.personaltech.entities.PersonalTrainer;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.servlet.ServletException;
@@ -53,14 +52,14 @@ public class CadastroUser extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        
+
         emf = Persistence.createEntityManagerFactory("PTech_PU");
         em = emf.createEntityManager();
         et = em.getTransaction();
         et.begin();
-        
+
         String tipo = request.getParameter("tipoUsuario");
-        
+
         if (tipo.equals("P")) {
             PersonalTrainer pt = new PersonalTrainer();
             pt = preencherPersonal(pt, request);
@@ -68,25 +67,32 @@ public class CadastroUser extends HttpServlet {
 
             commitTransaction();
             em.close();
-            emf.close();            
+            emf.close();
         } else if (tipo.equals("A")) {
             Aluno aluno = new Aluno();
+            String loginPersonal = request.getParameter("loginPersonal");
 
             String jpql = "SELECT p FROM PersonalTrainer p where p.login = ?1";
             Query query = em.createQuery(jpql);
-            query.setParameter(1, "CB");
-
-            PersonalTrainer pt = (PersonalTrainer) query.getSingleResult();
-
-//        PersonalTrainer pt = em.find(PersonalTrainer.class, (long) 1);
+            query.setParameter(1, loginPersonal);
+            PersonalTrainer pt = null;
+            try {
+                pt = (PersonalTrainer) query.getSingleResult();
+            } catch (NoResultException e) {
+                response.sendRedirect("view/cadastro.jsp");
+                if (pt == null) {
+                    return;
+                }
+            }
             aluno = preencherAluno(aluno, request);
             pt.addAluno(aluno);
             em.persist(aluno);
 
             commitTransaction();
             em.close();
-            emf.close();            
+            emf.close();
         }
+       response.sendRedirect("view/index.jsp"); 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -189,7 +195,7 @@ public class CadastroUser extends HttpServlet {
         aluno.setEndereco(end);
         return aluno;
     }
-    
+
     private PersonalTrainer preencherPersonal(PersonalTrainer personal, HttpServletRequest request) {
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
