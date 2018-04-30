@@ -4,8 +4,9 @@
 </head>
 <body>
     <%@ include file="navbar.jspf" %>
+    <script src="loginButton.js"></script>
     <div class="container">
-        <h1>Bem-vindo <span id="personal"></span></h1>
+        <h1>Bem-vindo, <span id="personal">${sessionScope.user}</span>!</h1>
         <div class="btn-group btn-group-justified">
             <a href="#" class="btn btn-primary">Ver Status</a>
         </div> 

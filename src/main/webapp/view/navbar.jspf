@@ -16,9 +16,10 @@
                 <li><a href="contato.jsp">Contato</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="cadastro.jsp"><span class="glyphicon glyphicon-user"></span> Cadastro</a></li>
-                <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <li><a href="index.jsp"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <li id="home"><a href="../HomeButtonController"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li id="cadastro"><a href="cadastro.jsp"><span class="glyphicon glyphicon-user"></span> Cadastro</a></li>
+                <li id="login"><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li id="logout"><a href="../CloseUserSession"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             </ul>
         </div>
     </div>

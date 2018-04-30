@@ -1,0 +1,1 @@
+document.querySelector("li#login").style.display = "none";

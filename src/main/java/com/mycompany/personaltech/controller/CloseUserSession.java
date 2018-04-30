@@ -5,20 +5,9 @@
  */
 package com.mycompany.personaltech.controller;
 
-import com.mycompany.personaltech.entities.Aluno;
-import com.mycompany.personaltech.entities.PersonalTrainer;
-import com.mycompany.personaltech.models.LoginPersonalModel;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Logger;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.NoResultException;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,9 +18,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author john
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
-@MultipartConfig
-public class LoginController extends HttpServlet {
+@WebServlet(name = "CloseUserSession", urlPatterns = {"/CloseUserSession"})
+public class CloseUserSession extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,33 +33,23 @@ public class LoginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-
-        String tipo = request.getParameter("tipoUsuarioLogin");
-        String login = request.getParameter("login");
-        String senha = request.getParameter("senha");
-
-        LoginPersonalModel lpm = new LoginPersonalModel();
-        boolean result = lpm.log(login, senha, tipo);
-        if (result) {
+//        try (PrintWriter out = response.getWriter()) {
+//            /* TODO output your page here. You may use following sample code. */
+//            out.println("<!DOCTYPE html>");
+//            out.println("<html>");
+//            out.println("<head>");
+//            out.println("<title>Servlet CloseUserSession</title>");
+//            out.println("</head>");
+//            out.println("<body>");
+//            out.println("<h1>Servlet CloseUserSession at " + request.getContextPath() + "</h1>");
+//            out.println("</body>");
+//            out.println("</html>");
             HttpSession session = request.getSession();
-            session.setAttribute("user", login);
-            session.setAttribute("logged", true);
-            session.setAttribute("tipo", tipo);
-            
             String sId = session.getId();
-            System.out.println("ID SESSÃO: " + sId);
-            request.setAttribute("opa", "opa");
-//            request.getRequestDispatcher("view/welcomep.jsp").forward(request, response);
-            if (tipo.equals("P")) {
-                response.sendRedirect("view/welcomep.jsp");
-            } else if (tipo.equals("A")) {
-                response.sendRedirect("view/welcomea.jsp");
-            }
-        } else {
-            response.sendRedirect("view/wronglogin.jsp");
-        }
-        return;
+            session.invalidate();
+            System.out.println("CLOSE SESSION: " + sId);
+            response.sendRedirect("view/login.jsp");
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

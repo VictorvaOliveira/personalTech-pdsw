@@ -5,6 +5,7 @@
 </head>
 <body>
     <%@ include file="navbar.jspf" %>
+    <script src="loginButton.js"></script>
     <div class="container">
         <form class="form-horizontal" method="post" action="../CadastroUser">
             <div class="col-sm-2"></div><div class="col-sm-10"><h3>Dados pessoais</h3></div>
@@ -73,7 +74,7 @@
             <div class="form-group" id="ifPersonal">
                 <label class="control-label col-sm-2" for="loginPersonal">Login do Personal: </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="loginPersonal" placeholder="Escreva um login único" name="loginPersonal"/>
+                    <input type="text" class="form-control" id="loginPersonal" placeholder="Escreva um login único" name="loginPersonal" value="${sessionScope.user}" disabled/>
                 </div>
             </div>
             

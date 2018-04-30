@@ -4,7 +4,9 @@ import com.mycompany.personaltech.entities.Aluno;
 import com.mycompany.personaltech.entities.Endereco;
 import com.mycompany.personaltech.entities.Exercicio;
 import com.mycompany.personaltech.entities.PersonalTrainer;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
@@ -135,19 +137,72 @@ public class AlunoTest {
     }
 
     @Test
-    public void inserirAluno_03() {
+    public void getTotallAlunos_01() {
+        String jpql = "SELECT COUNT(a) FROM Aluno a";
+        Query query = em.createQuery(jpql);
+
+        Long alunos = (Long) query.getSingleResult();
+        System.out.println(alunos);
+        assertTrue(alunos > 0);
+    }
+
+    @Test
+    public void getAllAlunos_01() {
+        String jpql = "SELECT a FROM Aluno a";
+        Query query = em.createQuery(jpql);
+
+        List<Aluno> alunos = (List) query.getResultList();
+
+        System.out.println("ALUNOS:");
+        for (Aluno aluno : alunos) {
+            logger.log(Level.INFO, "selecionarAlunoPorId: Aluno {0}", aluno.getNome() + " " + aluno.getSobrenome());
+        }
+        assertTrue(alunos != null);
+    }
+
+    @Test
+    public void getAllPersonalis_01() {
+        String jpql = "SELECT p FROM PersonalTrainer p";
+        Query query = em.createQuery(jpql);
+
+        List<PersonalTrainer> personais = (List) query.getResultList();
+
+        System.out.println("Personais:");
+        for (PersonalTrainer personal : personais) {
+            logger.log(Level.INFO, "selecionarAlunoPorId: PersonalTrainer {0}", personal.getNome() + " " + personal.getSobrenome());
+        }
+        assertTrue(personais != null);
+    }
+
+    @Test
+    public void editAluno_01() {
         String jpql = "SELECT a FROM Aluno a where a.login = ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1, "ALAN");
         Aluno aluno = (Aluno) query.getSingleResult();
-        
+
+        aluno.setLogin("NEWALAN");
+        em.persist(aluno);
+        em.flush();
+        em.clear();
+
+        assertEquals("NEWALAN", aluno.getLogin());
+    }
+
+    @Test
+    public void addExercicio_01() {
+        String jpql = "SELECT a FROM Aluno a where a.login = ?1";
+        Query query = em.createQuery(jpql);
+        query.setParameter(1, "NEWALAN");
+        Aluno aluno = (Aluno) query.getSingleResult();
+
         Exercicio ex = new Exercicio();
         ex.setTipo("ABD");
         ex.setExercicio("ABD_MALUCO");
-        
+
         aluno.addExercicio(ex);
-        assertEquals("ALAN", aluno.getLogin());
-        
+        assertEquals("NEWALAN", aluno.getLogin());
+
     }
 
 //    @Test
@@ -264,4 +319,4 @@ public class AlunoTest {
 //
 //        assertTrue(alunos == 30);
 //    }
-    }
+}

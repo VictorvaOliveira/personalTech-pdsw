@@ -1,0 +1,1 @@
+document.querySelector("li#cadastro").style.display = "none";

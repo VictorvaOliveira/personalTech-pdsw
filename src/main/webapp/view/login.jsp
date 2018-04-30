@@ -5,6 +5,9 @@
 </head>
 <body>
     <%@ include file="navbar.jspf" %>
+    <script src="logoutButton.js"></script>
+    <script src="cadastroButton.js"></script>
+    <script src="loginButton.js"></script>
     <div class="container">
         <h2>PersonalTech</h2>
         <form action="../LoginController" method="post">
