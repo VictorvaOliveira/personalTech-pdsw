@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ include file="top.jspf" %>
+<%@ taglib prefix="c"uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript" src="cadastro.js"></script>
 <title>PT|Cadastre-se</title>
 </head>
@@ -70,11 +71,10 @@
                     <input type="email" required class="form-control" id="email" placeholder="Escreva seu e-mail" name="email"/>
                 </div>
             </div>
-
             <div class="form-group" id="ifPersonal">
                 <label class="control-label col-sm-2" for="loginPersonal">Login do Personal: </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="loginPersonal" placeholder="Escreva um login único" name="loginPersonal" value="${sessionScope.user}" disabled/>
+                    <input type="text" class="form-control" id="loginPersonal" placeholder="Ex.: ${sessionScope.user}" name="loginPersonal" value="${sessionScope.user}"/>
                 </div>
             </div>
             
