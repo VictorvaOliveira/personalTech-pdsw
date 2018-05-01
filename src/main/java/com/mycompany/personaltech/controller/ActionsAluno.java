@@ -5,7 +5,7 @@
  */
 package com.mycompany.personaltech.controller;
 
-import com.mycompany.personaltech.models.RemoverPersonalModel;
+import com.mycompany.personaltech.models.RemoverAlunoModel;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author john
  */
-@WebServlet(name = "RemoverPersonal", urlPatterns = {"/view/RemoverPersonal"})
-public class RemoverPersonal extends HttpServlet {
+@WebServlet(name = "ActionsAluno", urlPatterns = {"/view/ActionsAluno"})
+public class ActionsAluno extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,18 +33,23 @@ public class RemoverPersonal extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        RemoverPersonalModel rpm = new RemoverPersonalModel();
-
+        RemoverAlunoModel ram = new RemoverAlunoModel();
         String user = (String) request.getSession().getAttribute("user");
-        boolean result = rpm.removePersonal(user);
-        if (result) {
-            String sessionId = request.getSession().getId();
-            request.getSession().invalidate();
-            System.out.println("CLOSED SESSION: " + sessionId);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        } else {
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+        String remover = request.getParameter("remover");
+        String stats = request.getParameter("stats");
+        String avaliar = request.getParameter("avaliar");
+        String editar = request.getParameter("editar");
+        String visualizar = request.getParameter("visualizar");
+        String loginAluno = request.getParameter("hidden");
+        System.out.println(loginAluno + " - " + remover);
+        if (remover != null) {
+            boolean result = ram.removeAluno(user, loginAluno);
         }
+//        if (result) {
+        request.getRequestDispatcher("welcomep.jsp").forward(request, response);
+//        } else {
+//            request.getRequestDispatcher("index.jsp").forward(request, response);
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

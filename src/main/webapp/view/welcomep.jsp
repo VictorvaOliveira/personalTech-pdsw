@@ -60,11 +60,14 @@
                                 <td>${a.getNome()}</td>
                                 <td>${a.getLogin()}</td>
                                 <td>
-                                    <a href="#" title="Visualizar"><span class="glyphicon glyphicon-list-alt" id="visualizar"/></a>
-                                    <a href="#" title="Editar"><span class="glyphicon glyphicon-pencil" id="editar"/></a>
-                                    <a href="#" title="Avaliar"><span class="glyphicon glyphicon-copy" id="avaliar"/></a>
-                                    <a href="#" title="Deletar"><span class="glyphicon glyphicon-remove" id="remover"/></a>
-                                    <a href="#" title="Ver Estatísticas"><span class="glyphicon glyphicon-stats" id="status"/></a>
+                                    <form method="post" action="ActionsAluno" name="meuform">   
+                                        <input type="hidden" name="hidden" value="${a.getLogin()}" />
+                                        <button title="Visualizar" class="btn btn-info btn-xs" value="visualizar" name="visualizar"><span class="glyphicon glyphicon-list-alt"></span></button>
+                                        <button title="Editar" class="btn btn-info btn-xs" value="editar" name="editar"><span class="glyphicon glyphicon-pencil"></span></button>
+                                        <button title="Avaliar" class="btn btn-info btn-xs" value="avaliar" name="avaliar"><span class="glyphicon glyphicon-copy"></span></button>
+                                        <button title="Estatísticas" class="btn btn-info btn-xs" value="stats" name="stats"><span class="glyphicon glyphicon-stats"></span></button>
+                                        <button title="Remover" class="btn btn-danger btn-xs" value="remover" name="remover"><span class=" glyphicon glyphicon-remove"></span></button>
+                                    </form>
                                 </td>
                             </tr>
 
