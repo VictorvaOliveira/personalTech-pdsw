@@ -4,7 +4,7 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-04-26T14:47:47")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-04-30T22:03:36")
 @StaticMetamodel(Endereco.class)
 public class Endereco_ { 
 

@@ -157,7 +157,7 @@ public class CadastroUser extends HttpServlet {
         try {
             date = new SimpleDateFormat("yyyy-MM-dd").parse(dataNascimento);
         } catch (ParseException ex) {
-            Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastroUser.class.getName()).log(Level.SEVERE, null, ex);
         }
         String login = request.getParameter("login");
         String email = request.getParameter("email");
@@ -207,7 +207,7 @@ public class CadastroUser extends HttpServlet {
         try {
             date = new SimpleDateFormat("yyyy-MM-dd").parse(dataNascimento);
         } catch (ParseException ex) {
-            Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastroUser.class.getName()).log(Level.SEVERE, null, ex);
         }
         String login = request.getParameter("login");
         String email = request.getParameter("email");

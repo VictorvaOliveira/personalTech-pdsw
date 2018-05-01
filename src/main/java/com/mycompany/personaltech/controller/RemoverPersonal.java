@@ -5,6 +5,7 @@
  */
 package com.mycompany.personaltech.controller;
 
+import com.mycompany.personaltech.models.RemoverPersonalModel;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author john
  */
-@WebServlet(name = "QualquerCoisa", urlPatterns = {"/QualquerCoisa"})
-public class QualquerCoisa extends HttpServlet {
+@WebServlet(name = "RemoverPersonal", urlPatterns = {"/view/RemoverPersonal"})
+public class RemoverPersonal extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,17 +33,14 @@ public class QualquerCoisa extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet QualquerCoisa</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet QualquerCoisa at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        RemoverPersonalModel rpm = new RemoverPersonalModel();
+        
+        String user = (String) request.getSession().getAttribute("user");
+        boolean result = rpm.removePersonal(user);
+        if (result) {
+            request.getRequestDispatcher("welcomep.jsp").forward(request, response);
+        } else {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
 

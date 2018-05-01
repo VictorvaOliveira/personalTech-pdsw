@@ -1,11 +1,10 @@
 com/mycompany/personaltech/entities/Exercicio.class
 org/json/HTTPTokener.class
 org/json/HTTP.class
-com/mycompany/personaltech/controller/CadastroUsuario.class
 com/mycompany/personaltech/controller/ValidacaoController.class
 org/json/JSONObject.class
+com/mycompany/personaltech/controller/SettingsPersonal.class
 com/mycompany/personaltech/controller/LoginController.class
-com/mycompany/personaltech/controller/UsuarioController.class
 org/json/JSONWriter.class
 org/json/JSONObject$1.class
 com/mycompany/personaltech/models/AlunoDAO.class
@@ -13,6 +12,8 @@ org/json/JSONArray.class
 com/mycompany/personaltech/models/JPAUtil.class
 com/mycompany/personaltech/listeners/NewServletListener.class
 org/json/JSONString.class
+com/mycompany/personaltech/controller/ReturnAlunos.class
+com/mycompany/personaltech/controller/RemoverPersonal.class
 org/json/JSONStringer.class
 org/json/JSONObject$Null.class
 org/json/CookieList.class
@@ -20,6 +21,7 @@ org/json/JSONTokener.class
 org/json/Cookie.class
 com/mycompany/personaltech/entities/PersonalTrainer_.class
 com/mycompany/personaltech/entities/PersonalTrainer.class
+com/mycompany/personaltech/models/GetttersModel.class
 com/mycompany/personaltech/entities/Aluno_.class
 com/mycompany/personaltech/models/LoginPersonalModel.class
 org/json/JSONException.class
@@ -27,7 +29,9 @@ com/mycompany/personaltech/entities/Exercicio_.class
 com/mycompany/personaltech/controller/CadastroUser.class
 org/json/XMLTokener.class
 org/json/XML.class
+com/mycompany/personaltech/controller/CloseUserSession.class
 org/json/CDL.class
+com/mycompany/personaltech/controller/HomeButtonController.class
 com/mycompany/personaltech/entities/Endereco.class
 com/mycompany/personaltech/entities/Aluno.class
 org/json/JSONML.class

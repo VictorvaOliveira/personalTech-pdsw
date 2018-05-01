@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author john
  */
-@WebServlet(name = "ReturnAlunos", urlPatterns = {"/ReturnAlunos"})
+@WebServlet(name = "ReturnAlunos", urlPatterns = {"/view/ReturnAlunos"})
 public class ReturnAlunos extends HttpServlet {
 
     /**
@@ -40,25 +40,8 @@ public class ReturnAlunos extends HttpServlet {
         GetttersModel gm = new GetttersModel();
         HttpSession session = request.getSession();
         List<Aluno> listaDeAlunos = gm.getAlunos((String) session.getAttribute("user"));
-        session.setAttribute("alunos", listaDeAlunos);
-        request.setAttribute("alunos2",listaDeAlunos);
-        response.sendRedirect("view/welcomep.jsp");
-
-//        try (PrintWriter out = response.getWriter()) {
-//            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet ReturnAlunos</title>");
-//            out.println("</head>");
-//            out.println("<body>");
-//            for (Aluno aluno : listaDeAlunos) {
-//                out.println("<h1>Servlet ReturnAlunos at " + aluno.getLogin() + "</h1>");
-//            }
-//            out.println("</body>");
-//            out.println("</html>");
-//        }
-        
+        request.setAttribute("alunos", listaDeAlunos);
+        request.getRequestDispatcher("welcomep.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
