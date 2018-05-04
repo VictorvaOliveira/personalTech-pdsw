@@ -41,12 +41,18 @@ public class ActionsAluno extends HttpServlet {
         String editar = request.getParameter("editar");
         String visualizar = request.getParameter("visualizar");
         String loginAluno = request.getParameter("hidden");
-        System.out.println(loginAluno + " - " + remover);
+        System.out.println("ACTION ON: " + loginAluno);
         if (remover != null) {
             boolean result = ram.removeAluno(user, loginAluno);
+            request.getRequestDispatcher("welcomep.jsp").forward(request, response);
+        } else if (editar != null) {
+            request.getRequestDispatcher("updateAluno.jsp").forward(request, response);
+        } else {
+            request.getRequestDispatcher("cadastro.jsp").forward(request, response);
         }
 //        if (result) {
-        request.getRequestDispatcher("welcomep.jsp").forward(request, response);
+//            request.getRequestDispatcher("cadastro.jsp").forward(request, response);
+
 //        } else {
 //            request.getRequestDispatcher("index.jsp").forward(request, response);
 //        }
