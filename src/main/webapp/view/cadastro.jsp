@@ -48,9 +48,12 @@
             <div class="form-group" id="AorP">
                 <label for="tipoUsuarioCad" class="control-label col-sm-2">Tipo de usuário: </label>
                 <div class="col-sm-10">
+
                     <select class="form-control" id="tipoUsuarioCad" name="tipoUsuario" required>
-                        <option selected value="">-- Escolha o tipo de usuário--</option>
-                        <option value="P">Personal Trainer</option>
+                        <c:if test="${sessionScope.user == 'CB'}">
+                            <option selected value="">-- Escolha o tipo de usuário--</option>
+                            <option value="P">Personal Trainer</option>
+                        </c:if>
                         <option value="A">Aluno</option>
                     </select>
                     <span id="msgTipoUsuario"/>
@@ -71,13 +74,11 @@
                     <input type="email" required class="form-control" id="email" placeholder="Escreva seu e-mail" name="email"/>
                 </div>
             </div>
-            <div class="form-group" id="ifPersonal">
-                <label class="control-label col-sm-2" for="loginPersonal">Login do Personal: </label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="loginPersonal" placeholder="Ex.: ${sessionScope.user}" name="loginPersonal" value="${sessionScope.user}"/>
-                </div>
-            </div>
-            
+
+
+            <input type="hidden" class="form-control" id="loginPersonal" placeholder="Ex.: ${sessionScope.user}" name="loginPersonal" value="${sessionScope.user}"/>
+
+
             <div class="form-group">
                 <label class="control-label col-sm-2" for="login">Login: </label>
                 <div class="col-sm-10">
@@ -151,13 +152,15 @@
             <div id="uf" class="form-group">
                 <label class="control-label col-sm-2">Cidades: </label> 
                 <div class="col-sm-10">
-                    <select class="form-control" name="cidade"></select>
+                    <select class="form-control" name="cidade" required></select>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-success">Cadastrar</button>
+                    <button type="reset" class="btn btn-warning">Reset</button>
+                    <a href="index.jsp"><button type="button" class="btn btn-danger">Cancelar</button></a>
                 </div>
             </div>
         </form> 

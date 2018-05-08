@@ -5,9 +5,12 @@
  */
 package com.mycompany.personaltech.controller;
 
+import com.mycompany.personaltech.entities.Aluno;
 import com.mycompany.personaltech.models.RemoverAlunoModel;
+import com.mycompany.personaltech.models.GettersModel;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,8 +47,19 @@ public class ActionsAluno extends HttpServlet {
         System.out.println("ACTION ON: " + loginAluno);
         if (remover != null) {
             boolean result = ram.removeAluno(user, loginAluno);
+            GettersModel gm = new GettersModel();
             request.getRequestDispatcher("welcomep.jsp").forward(request, response);
         } else if (editar != null) {
+            GettersModel gm = new GettersModel();
+            
+            Aluno aluno = gm.getAlunoForUpdate(loginAluno);
+            
+            Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+            String s = formatter.format(aluno.getDataNascimento());
+            System.out.println(s);
+            
+            request.setAttribute("alunoDataNascimento", s);
+            request.setAttribute("aluno", aluno);
             request.getRequestDispatcher("updateAluno.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("cadastro.jsp").forward(request, response);

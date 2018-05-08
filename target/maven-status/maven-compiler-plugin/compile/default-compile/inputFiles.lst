@@ -2,6 +2,7 @@
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/JSONStringer.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/entities/Exercicio.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/JSONException.java
+/home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/controller/UpdateController.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/JSONArray.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/controller/CloseUserSession.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/entities/Aluno.java
@@ -11,14 +12,16 @@
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/models/AlunoDAO.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/HTTP.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/XML.java
+/home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/models/RemoverAlunoModel.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/JSONObject.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/Cookie.java
+/home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/models/RemoverPersonalModel.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/models/JPAUtil.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/HTTPTokener.java
+/home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/models/GettersModel.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/JSONML.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/JSONTokener.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/entities/Endereco.java
-/home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/models/GetttersModel.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/controller/HomeButtonController.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/controller/SettingsPersonal.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/controller/ReturnAlunos.java
@@ -28,5 +31,6 @@
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/XMLTokener.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/CookieList.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/controller/LoginController.java
+/home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/controller/ActionsAluno.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/listeners/NewServletListener.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/JSONWriter.java

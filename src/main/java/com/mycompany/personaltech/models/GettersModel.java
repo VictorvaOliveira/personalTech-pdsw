@@ -19,7 +19,7 @@ import javax.persistence.Query;
  *
  * @author john
  */
-public class GetttersModel {
+public class GettersModel {
 
     private static EntityManagerFactory emf;
     private static Logger logger;
@@ -41,6 +41,19 @@ public class GetttersModel {
         commitAndClose();
         return listaDeAlunos;
         
+    }
+    
+    public Aluno getAlunoForUpdate(String login) {
+        emf = Persistence.createEntityManagerFactory("PTech_PU");
+        em = emf.createEntityManager();
+        et = em.getTransaction();
+        et.begin();
+        
+        String jpql = "SELECT a FROM Aluno a WHERE a.login = ?1";
+        Query query = em.createQuery(jpql);
+        query.setParameter(1, login);
+        
+        return (Aluno) query.getSingleResult();        
     }
 
     void commitAndClose() {

@@ -35,13 +35,6 @@
                         </button>
                     </a> Excluir usuário ${sessionScope.user}
                 </p>
-                <p>
-                    <a href="#"  style="text-decoration: none;">
-                        <button type="button" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
-                        </button>
-                    </a> Excluir um Personal Trainer
-                </p>
             </c:if>
 
             <c:if test="${requestScope.alunos != null}">
