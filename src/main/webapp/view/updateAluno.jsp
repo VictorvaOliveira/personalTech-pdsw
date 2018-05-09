@@ -88,8 +88,8 @@
                 </div>
             </div>
 
-
-            <input type="hidden" class="form-control" id="loginPersonal" placeholder="Ex.: ${sessionScope.user}" name="loginPersonal" value="${sessionScope.user}"/>
+            <input type="hidden"  id="currentLogin" name="currentLogin" value="${requestScope.aluno.getLogin()}"/>
+            <input type="hidden"  id="loginPersonal" name="loginPersonal" value="${sessionScope.user}"/>
 
 
             <div class="form-group">
@@ -154,7 +154,7 @@
                     <input type="text" class="form-control" required id="cep" name="cep" placeholder="Insira o sei CEP" value="${requestScope.aluno.endereco.getCep()}"/>
                 </div>
             </div>
-                
+
             <div id="uf" class="form-group">
                 <label class="control-label col-sm-2">Estados: </label> 
                 <div class="col-sm-10">

@@ -51,8 +51,6 @@ public class LoginController extends HttpServlet {
             
             String sId = session.getId();
             System.out.println("ID SESSÃO: " + sId);
-            request.setAttribute("opa", "opa");
-//            request.getRequestDispatcher("view/welcomep.jsp").forward(request, response);
             if (tipo.equals("P")) {
                 response.sendRedirect("view/welcomep.jsp");
             } else if (tipo.equals("A")) {

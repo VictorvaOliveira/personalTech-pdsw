@@ -5,8 +5,16 @@
  */
 package com.mycompany.personaltech.controller;
 
+import com.mycompany.personaltech.entities.Aluno;
+import com.mycompany.personaltech.entities.Endereco;
+import com.mycompany.personaltech.models.UpdateModel;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,18 +40,57 @@ public class UpdateController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet UpdateController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet UpdateController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        request.setCharacterEncoding("UTF-8");
+        
+        String currentLogin = request.getParameter("currentLogin");
+        String nome = request.getParameter("nome");
+        String sobrenome = request.getParameter("sobrenome");
+        String sexo = request.getParameter("sexo");
+        String cpf = request.getParameter("cpf");
+        String tipoUsuario = request.getParameter("tipoUsuario");
+        String dataNascimento = request.getParameter("dataNascimento");
+        Date date = new Date();
+        try {
+            date = new SimpleDateFormat("yyyy-MM-dd").parse(dataNascimento);
+        } catch (ParseException ex) {
+            Logger.getLogger(CadastroUser.class.getName()).log(Level.SEVERE, null, ex);
         }
+        String login = request.getParameter("login");
+        String email = request.getParameter("email");
+        String senha = request.getParameter("senha");
+
+        String logradouro = request.getParameter("logradouro");
+        String bairro = request.getParameter("bairro");
+        String numero = request.getParameter("numero");
+        String cep = request.getParameter("cep");
+        String cidade = request.getParameter("cidade");
+        String estado = request.getParameter("estado");
+        String complemento = request.getParameter("complemento");
+        Aluno aluno = new Aluno();
+        aluno.setNome(nome);
+        aluno.setSobrenome(sobrenome);
+        aluno.setCpf(cpf);
+        aluno.setTipo(tipoUsuario);
+        aluno.setLogin(login);
+        aluno.setSenha(senha);
+        aluno.setEmail(email);
+        aluno.setSexo(sexo);
+        aluno.setDataNascimento(date);
+
+        Endereco end = new Endereco();
+        end.setLogradouro(logradouro);
+        end.setBairro(bairro);
+        end.setNumero(Integer.parseInt(numero));
+        end.setCep(cep);
+        end.setCidade(cidade);
+        end.setEstado(estado);
+        end.setComplemento(complemento);
+        aluno.setEndereco(end);
+
+        UpdateModel um = new UpdateModel();
+        um.updateAluno(aluno, currentLogin);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

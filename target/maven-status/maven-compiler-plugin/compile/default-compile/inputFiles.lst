@@ -2,6 +2,7 @@
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/JSONStringer.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/entities/Exercicio.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/JSONException.java
+/home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/models/UpdateModel.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/controller/UpdateController.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/JSONArray.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/controller/CloseUserSession.java

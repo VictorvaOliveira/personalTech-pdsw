@@ -38,5 +38,6 @@ com/mycompany/personaltech/controller/UpdateController.class
 com/mycompany/personaltech/controller/HomeButtonController.class
 com/mycompany/personaltech/entities/Endereco.class
 com/mycompany/personaltech/entities/Aluno.class
+com/mycompany/personaltech/models/UpdateModel.class
 org/json/JSONML.class
 com/mycompany/personaltech/entities/Endereco_.class

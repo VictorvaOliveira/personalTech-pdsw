@@ -25,13 +25,13 @@ public class GettersModel {
     private static Logger logger;
     private EntityManager em;
     private EntityTransaction et;
-    
+
     public List<Aluno> getAlunos(String loginPt) {
         emf = Persistence.createEntityManagerFactory("PTech_PU");
         em = emf.createEntityManager();
         et = em.getTransaction();
         et.begin();
-        
+
         String jpql = "SELECT p FROM PersonalTrainer p WHERE p.login = ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1, loginPt);
@@ -40,20 +40,23 @@ public class GettersModel {
         List<Aluno> listaDeAlunos = pt.getAlunos();
         commitAndClose();
         return listaDeAlunos;
-        
+
     }
-    
+
     public Aluno getAlunoForUpdate(String login) {
         emf = Persistence.createEntityManagerFactory("PTech_PU");
         em = emf.createEntityManager();
         et = em.getTransaction();
         et.begin();
-        
+
         String jpql = "SELECT a FROM Aluno a WHERE a.login = ?1";
         Query query = em.createQuery(jpql);
         query.setParameter(1, login);
-        
-        return (Aluno) query.getSingleResult();        
+        Aluno aluno = (Aluno) query.getSingleResult();
+        if (aluno != null) {
+            return aluno;
+        }
+        return null;
     }
 
     void commitAndClose() {

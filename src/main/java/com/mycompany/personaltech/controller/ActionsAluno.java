@@ -53,6 +53,10 @@ public class ActionsAluno extends HttpServlet {
             GettersModel gm = new GettersModel();
             
             Aluno aluno = gm.getAlunoForUpdate(loginAluno);
+            if (aluno == null) {
+                response.sendRedirect("https://www.youtube.com/watch?v=2LCM4q6KpdQ");
+                return;
+            }
             
             Format formatter = new SimpleDateFormat("yyyy-MM-dd");
             String s = formatter.format(aluno.getDataNascimento());

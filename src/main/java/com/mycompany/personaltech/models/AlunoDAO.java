@@ -21,7 +21,7 @@ import static org.eclipse.persistence.jpa.jpql.Assert.fail;
 public class AlunoDAO {
 
     private static EntityManagerFactory emf;
-        private static Logger logger;
+    private static Logger logger;
     private EntityManager em;
     private EntityTransaction et;
 
@@ -31,12 +31,12 @@ public class AlunoDAO {
         et = em.getTransaction();
         et.begin();
     }
-    
-    void persistAluno(Aluno aluno){
+
+    void persistAluno(Aluno aluno) {
         em.persist(aluno);
     }
-    
-    void removeAluno(Aluno aluno){
+
+    void removeAluno(Aluno aluno) {
         em.persist(aluno);
     }
 
