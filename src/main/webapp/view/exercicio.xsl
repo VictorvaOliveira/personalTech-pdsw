@@ -4,7 +4,7 @@
     <xsl:template match="/">
         <xsl:for-each select="root/exercicios/exercicio">
             <xsl:sort select="exercicio" />
-            <option value="@nome"><xsl:value-of select="@nome"/></option>
+            <option value="{@nome}"><xsl:value-of select="@nome"/></option>
         </xsl:for-each>
     </xsl:template>
 

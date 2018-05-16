@@ -9,8 +9,10 @@
     <script src="loginButton.js"></script>
     <div class="container">
 
-        <form class="form-horizontal" method="post" action="UpdateController">
+        <form class="form-horizontal" method="post" action="UpdateExercicio">
 
+            <input type="hidden" name="idEx" value="${requestScope.ex.getId()}"/>
+            
             <div class="form-group">
                 <label class="control-label col-sm-2" for="oldEx">Exercicio Atual: </label>
                 <div class="col-sm-10">

@@ -21,22 +21,39 @@ import javax.persistence.Query;
  * @author john
  */
 public class ExercicioModel {
-    
+
     private static EntityManagerFactory emf;
     private static Logger logger;
     private EntityManager em;
     private EntityTransaction et;
 
     public void removeExercicio(Long idExercicio, Long idAluno) {
-            emf = Persistence.createEntityManagerFactory("PTech_PU");
-            em = emf.createEntityManager();
-            et = em.getTransaction();
-            et.begin();
-            
-            Aluno aluno = em.find(Aluno.class, idAluno);
-            Exercicio exercicio = em.find(Exercicio.class, idExercicio);
-            aluno.getExercicios().remove(exercicio);
-            commitAndClose();
+        emf = Persistence.createEntityManagerFactory("PTech_PU");
+        em = emf.createEntityManager();
+        et = em.getTransaction();
+        et.begin();
+
+        Aluno aluno = em.find(Aluno.class, idAluno);
+        Exercicio exercicio = em.find(Exercicio.class, idExercicio);
+        aluno.getExercicios().remove(exercicio);
+        commitAndClose();
+    }
+
+
+    public void editExercicio(long idAluno, Long idEx, String tipoExercicio, String exercicio, int serie, int peso, int repeticao) {
+        emf = Persistence.createEntityManagerFactory("PTech_PU");
+        em = emf.createEntityManager();
+        et = em.getTransaction();
+        et.begin();
+
+        Exercicio ex = em.find(Exercicio.class, idEx);
+        ex.setTipo(tipoExercicio);
+        ex.setExercicio(exercicio);
+        ex.setSerie(serie);
+        ex.setRepeticao(repeticao);
+        ex.setPeso(peso);
+        
+        commitAndClose();
     }
 
     void commitAndClose() {
@@ -44,5 +61,4 @@ public class ExercicioModel {
         em.close();
         emf.close();
     }
-    
 }

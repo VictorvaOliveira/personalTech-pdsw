@@ -2,10 +2,8 @@ var xhr = new XMLHttpRequest();
 var xml;
 
 function preencher() {
-    alert("HELLOOOOOOOO");
     if (xhr.readyState === 4) {
         xml = xhr.responseXML;
-        alert("OK!!");
         var form = document.forms[0];
         var xsltProcessor = new XSLTProcessor();
         var xsl = new XMLHttpRequest();
@@ -16,8 +14,6 @@ function preencher() {
                 xsltProcessor.importStylesheet(xslt);
                 var result = xsltProcessor.transformToFragment(xml, document);
                 form.exercicio.appendChild(result);
-                alert("result");
-                console.log(result);
             }
         };
         xsl.send();
