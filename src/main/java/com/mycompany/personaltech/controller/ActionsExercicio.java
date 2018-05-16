@@ -42,8 +42,6 @@ public class ActionsExercicio extends HttpServlet {
         String loginAluno = request.getParameter("loginAluno");
         String idAluno = request.getParameter("idAluno");
         long idAl = Long.parseLong(idAluno);
-        System.out.println(loginAluno);
-        System.out.println(idAluno);
         String idExercicio = request.getParameter("idExercicio");
         long idEx = Long.parseLong(idExercicio);
         String remover = request.getParameter("remover");
