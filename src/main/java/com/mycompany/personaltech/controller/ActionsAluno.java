@@ -43,28 +43,28 @@ public class ActionsAluno extends HttpServlet {
         String avaliar = request.getParameter("avaliar");
         String editar = request.getParameter("editar");
         String visualizar = request.getParameter("visualizar");
-        String loginAluno = request.getParameter("hidden");
+        String loginAluno = request.getParameter("loginAluno");
         System.out.println("ACTION ON: " + loginAluno);
+        GettersModel gm = new GettersModel();
         if (remover != null) {
             boolean result = ram.removeAluno(user, loginAluno);
-            GettersModel gm = new GettersModel();
             request.getRequestDispatcher("welcomep.jsp").forward(request, response);
         } else if (editar != null) {
-            GettersModel gm = new GettersModel();
-            
             Aluno aluno = gm.getAlunoForUpdate(loginAluno);
             if (aluno == null) {
                 response.sendRedirect("https://www.youtube.com/watch?v=2LCM4q6KpdQ");
                 return;
             }
-            
             Format formatter = new SimpleDateFormat("yyyy-MM-dd");
             String s = formatter.format(aluno.getDataNascimento());
-            System.out.println(s);
-            
             request.setAttribute("alunoDataNascimento", s);
             request.setAttribute("aluno", aluno);
             request.getRequestDispatcher("updateAluno.jsp").forward(request, response);
+        } else if (visualizar != null) {
+            Aluno aluno = gm.getAluno(loginAluno);
+            request.getSession().setAttribute("aluno", aluno);
+            request.setAttribute("aluno", aluno);
+            request.getRequestDispatcher("visAluno.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("cadastro.jsp").forward(request, response);
         }

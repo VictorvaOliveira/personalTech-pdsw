@@ -6,6 +6,7 @@
 package com.mycompany.personaltech.models;
 
 import com.mycompany.personaltech.entities.Aluno;
+import com.mycompany.personaltech.entities.Exercicio;
 import com.mycompany.personaltech.entities.PersonalTrainer;
 import java.util.List;
 import java.util.logging.Logger;
@@ -43,6 +44,10 @@ public class GettersModel {
 
     }
 
+    public Aluno getAluno(String login) {
+        return getAlunoForUpdate(login);
+    }
+
     public Aluno getAlunoForUpdate(String login) {
         emf = Persistence.createEntityManagerFactory("PTech_PU");
         em = emf.createEntityManager();
@@ -63,5 +68,18 @@ public class GettersModel {
         et.commit();
         em.close();
         emf.close();
+    }
+
+    public Exercicio getExercicio(long idEx) {
+        emf = Persistence.createEntityManagerFactory("PTech_PU");
+        em = emf.createEntityManager();
+        et = em.getTransaction();
+        et.begin();
+        
+        Exercicio ex = em.find(Exercicio.class, (idEx));
+        if (ex != null) {
+            return ex;
+        }
+        return null;
     }
 }

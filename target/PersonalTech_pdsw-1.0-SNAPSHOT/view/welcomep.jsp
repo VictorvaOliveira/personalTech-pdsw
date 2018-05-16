@@ -54,7 +54,7 @@
                                 <td>${a.getLogin()}</td>
                                 <td>
                                     <form method="post" action="ActionsAluno" name="meuform">   
-                                        <input type="hidden" name="hidden" value="${a.getLogin()}" />
+                                        <input type="hidden" name="loginAluno" value="${a.getLogin()}" />
                                         <button title="Visualizar" class="btn btn-info btn-xs" value="visualizar" name="visualizar"><span class="glyphicon glyphicon-list-alt"></span></button>
                                         <button title="Editar" class="btn btn-info btn-xs" value="editar" name="editar"><span class="glyphicon glyphicon-pencil"></span></button>
                                         <button title="Avaliar" class="btn btn-info btn-xs" value="avaliar" name="avaliar"><span class="glyphicon glyphicon-copy"></span></button>

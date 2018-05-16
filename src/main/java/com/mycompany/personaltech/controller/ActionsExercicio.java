@@ -6,24 +6,23 @@
 package com.mycompany.personaltech.controller;
 
 import com.mycompany.personaltech.entities.Aluno;
+import com.mycompany.personaltech.entities.Exercicio;
+import com.mycompany.personaltech.models.ExercicioModel;
 import com.mycompany.personaltech.models.GettersModel;
-
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author john
  */
-@WebServlet(name = "ReturnAlunos", urlPatterns = {"/view/ReturnAlunos"})
-public class ReturnAlunos extends HttpServlet {
+@WebServlet(name = "ActionsExercicio", urlPatterns = {"/view/ActionsExercicio"})
+public class ActionsExercicio extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,11 +37,49 @@ public class ReturnAlunos extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        GettersModel gm = new GettersModel();
-        HttpSession session = request.getSession();
-        List<Aluno> listaDeAlunos = gm.getAlunos((String) session.getAttribute("user"));
-        request.setAttribute("alunos", listaDeAlunos);
-        request.getRequestDispatcher("welcomep.jsp").forward(request, response);
+
+        String user = (String) request.getSession().getAttribute("user");
+        String loginAluno = request.getParameter("loginAluno");
+        String idAluno = request.getParameter("idAluno");
+        long idAl = Long.parseLong(idAluno);
+        System.out.println(loginAluno);
+        System.out.println(idAluno);
+        String idExercicio = request.getParameter("idExercicio");
+        long idEx = Long.parseLong(idExercicio);
+        String remover = request.getParameter("remover");
+        String editar = request.getParameter("editar");
+        GettersModel gm;
+        ExercicioModel exm;
+
+        if (remover != null) {
+            exm = new ExercicioModel();
+            exm.removeExercicio(idEx, idAl);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        } else if (editar != null) {
+            gm = new GettersModel();
+            Aluno aluno = gm.getAlunoForUpdate(loginAluno);
+            Exercicio ex = gm.getExercicio(idEx);
+            request.setAttribute("aluno", aluno);
+            request.setAttribute("ex", ex);
+            if (ex != null) {
+                request.getRequestDispatcher("updateExercicio.jsp").forward(request, response);
+            } else {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
+        } else {
+            try (PrintWriter out = response.getWriter()) {
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Servlet ActionsExercicio</title>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<img src=\"https://i.ytimg.com/vi/2LCM4q6KpdQ/hqdefault.jpg\"/>");
+                out.println("</body>");
+                out.println("</html>");
+            }
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

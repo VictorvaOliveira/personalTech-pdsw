@@ -31,6 +31,15 @@ public class Exercicio implements Serializable {
     
     @Column(name = "TXT_NOME_EXERCICIO", length = 50, nullable = true)
     private String exercicio;
+    
+    @Column(name = "NUM_SERIE", length = 2, nullable = false)
+    private Integer serie;
+    
+    @Column(name = "NUM_REPETICAO", length = 3, nullable = false)
+    private Integer repeticao;
+    
+    @Column(name = "NUM_PESO", length = 3, nullable = false)
+    private Integer peso;
 
     public Long getId() {
         return id;
@@ -55,6 +64,32 @@ public class Exercicio implements Serializable {
     public void setExercicio(String exercicio) {
         this.exercicio = exercicio;
     }
+
+    public Integer getSerie() {
+        return serie;
+    }
+
+    public void setSerie(Integer serie) {
+        this.serie = serie;
+    }
+
+    public Integer getRepeticao() {
+        return repeticao;
+    }
+
+    public void setRepeticao(Integer repeticao) {
+        this.repeticao = repeticao;
+    }
+
+    public Integer getPeso() {
+        return peso;
+    }
+
+    public void setPeso(Integer peso) {
+        this.peso = peso;
+    }
+    
+    
 
     @Override
     public int hashCode() {

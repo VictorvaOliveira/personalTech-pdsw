@@ -3,8 +3,9 @@ package com.mycompany.tests;
 import com.mycompany.personaltech.entities.Aluno;
 import com.mycompany.personaltech.entities.Endereco;
 import com.mycompany.personaltech.entities.Exercicio;
+import com.mycompany.personaltech.entities.NomeExercicio;
 import com.mycompany.personaltech.entities.PersonalTrainer;
-import java.util.ArrayList;
+import com.mycompany.personaltech.entities.TipoExercicio;
 import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
@@ -126,12 +127,55 @@ public class AlunoTest {
         end.setCep("123456-88");
         end.setCidade("RECIFE");
         end.setEstado("PERNAMBUCO");
+        
+        Exercicio ex = new Exercicio();
+        ex.setTipo("PEITORAL");
+        ex.setExercicio("PEIT_SUP_KINESIS");
+        ex.setSerie(3);
+        ex.setRepeticao(30);
+        ex.setPeso(10);
+
+        aluno.addExercicio(ex);
 //
         aluno.setEndereco(end);
-        PersonalTrainer pt = em.find(PersonalTrainer.class, (long) 1);
+        PersonalTrainer pt = em.find(PersonalTrainer.class, (long) 1); // carlos CB
         pt.addAluno(aluno);
         em.persist(aluno);
 //
+        em.flush();
+        assertNotNull(aluno.getId());
+    }
+    
+    @Test
+    public void inserirAluno_02() {
+        Aluno aluno = new Aluno();
+        aluno.setNome("BONECO");
+        aluno.setSobrenome("JOSIAS");
+        aluno.setCpf("23454321666");
+        aluno.setTipo("A");
+        aluno.setLogin("JOSIAS");
+        aluno.setSenha("JOSIAS");
+        aluno.setEmail("BONECO@JOSIAS");
+        aluno.setSexo("M");
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, 1998);
+        cal.set(Calendar.MONTH, Calendar.JANUARY);
+        cal.set(Calendar.DAY_OF_MONTH, 10);
+        aluno.setDataNascimento(cal.getTime());
+
+        Endereco end = new Endereco();
+        end.setLogradouro("RUA DO CORDEIRO");
+        end.setBairro("CORDEIRO");
+        end.setNumero(666);
+        end.setCep("123456-88");
+        end.setCidade("RECIFE");
+        end.setEstado("PERNAMBUCO");
+
+        aluno.setEndereco(end);
+        PersonalTrainer pt = em.find(PersonalTrainer.class, (long) 1);  // carlos CB
+        pt.addAluno(aluno);
+        em.persist(aluno);
+
         em.flush();
         assertNotNull(aluno.getId());
     }
@@ -197,8 +241,11 @@ public class AlunoTest {
         Aluno aluno = (Aluno) query.getSingleResult();
 
         Exercicio ex = new Exercicio();
-        ex.setTipo("ABD");
-        ex.setExercicio("ABD_MALUCO");
+        ex.setTipo("PEITORAL");
+        ex.setExercicio("PEIT_SUP_KINESIS");
+        ex.setSerie(3);
+        ex.setRepeticao(30);
+        ex.setPeso(10);
 
         aluno.addExercicio(ex);
         assertEquals("NEWALAN", aluno.getLogin());
@@ -215,11 +262,15 @@ public class AlunoTest {
 //        aluno.setSenha("123");
 //        aluno.setEmail("KENNYH@gmail");
 //        aluno.setSexo("F");
-//        aluno.addTelefone("111 222 333");
+////        aluno.addTelefone("111 222 333");
 //
 //        Exercicio ex = new Exercicio();
-//        ex.setExercicio(NomeExercicio.COXAS_45_STIFF_BARRA);
-//        ex.setTipo(TipoExercicio.COXAS);
+//        
+//        ex.setExercicio("COXAS_45_STIFF_BARRA");
+//        ex.setTipo("COXAS");
+//        ex.setSerie(2);
+//        ex.setRepeticao(20);
+//        ex.setPeso(5);
 //        aluno.addExercicio(ex);
 //
 //        Calendar c = Calendar.getInstance();
@@ -241,7 +292,7 @@ public class AlunoTest {
 //        em.persist(aluno);
 //
 //        em.flush();
-//        assertNotNull(em.find(Aluno.class, (long) 38));
+//        assertNotNull(em.find(Aluno.class, (long) 3));
 //    }
 //
 //    @Test
