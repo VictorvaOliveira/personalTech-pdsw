@@ -5,9 +5,9 @@
  */
 package com.mycompany.personaltech.controller;
 
-import com.mycompany.personaltech.models.ExercicioModel;
 import com.mycompany.personaltech.entities.Aluno;
 import com.mycompany.personaltech.entities.TipoExercicio;
+import com.mycompany.personaltech.models.ExercicioModel;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,10 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author john
+ * @author victor
  */
-@WebServlet(name = "UpdateExercicio", urlPatterns = {"/view/UpdateExercicio"})
-public class UpdateExercicio extends HttpServlet {
+@WebServlet(name = "CadastrarExercicio", urlPatterns = {"/view/CadastrarExercicio"})
+public class CadastrarExercicio extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,18 +35,16 @@ public class UpdateExercicio extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
 
-        Long idEx = Long.parseLong(request.getParameter("idEx"));
+//        Long idEx = Long.parseLong(request.getParameter("idEx"));
         String exercicio = request.getParameter("exercicio");
         String serie = request.getParameter("serie");
         String peso = request.getParameter("peso");
         String repeticao = request.getParameter("repeticao");
-        
+
         int numPeso = Integer.parseInt(peso);
         int numSerie = Integer.parseInt(serie);
         int numRepeticao = Integer.parseInt(repeticao);
-        
 
         String tipoExercicio = exercicio.substring(0, exercicio.indexOf("_"));
 
@@ -72,25 +70,14 @@ public class UpdateExercicio extends HttpServlet {
         long idAluno = aluno.getId();
 
         ExercicioModel exm = new ExercicioModel();
-        exm.editExercicio(idAluno, idEx,tipoExercicio,exercicio, numSerie, numPeso, numRepeticao);
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet UpdateExercicio</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet UpdateExercicio at " + request.getContextPath() + "</h1>");
-            out.println(idAluno);
-            out.println(idEx);
-            out.println(exercicio);
-            out.println(serie);
-            out.println(peso);
-            out.println(repeticao);
-            out.println("</body>");
-            out.println("</html>");
-        }
+        exm.insertExercicio(idAluno, tipoExercicio, exercicio, numSerie, numRepeticao, numPeso);
+        response.sendRedirect("welcomep.jsp");
+//        try{
+//            request.getRequestDispatcher("index.jsp");
+//        }catch(Exception e ){
+//            request.getRequestDispatcher("cadastrarExercicio.jsp");
+//        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

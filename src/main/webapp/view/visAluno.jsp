@@ -10,7 +10,7 @@
         <h1>Exercícios de ${requestScope.aluno.getNome()}</h1>
         <div class="btn-group btn-group-justified">
             <a href="" class="btn btn-primary"><span class="glyphicon glyphicon-th-list"></span> Listar Exercícios</a>
-            <a href="ReturnExercicios" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Adicionar Exercícios</a>
+            <a href="cadastrarExercicio.jsp" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Adicionar Exercícios</a>
         </div> 
         <div class="well well-lg">
             <table class="table table-bordered">

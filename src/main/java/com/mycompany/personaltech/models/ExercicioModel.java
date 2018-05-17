@@ -7,14 +7,11 @@ package com.mycompany.personaltech.models;
 
 import com.mycompany.personaltech.entities.Aluno;
 import com.mycompany.personaltech.entities.Exercicio;
-import com.mycompany.personaltech.entities.PersonalTrainer;
-import java.util.List;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 /**
  *
@@ -39,7 +36,6 @@ public class ExercicioModel {
         commitAndClose();
     }
 
-
     public void editExercicio(long idAluno, Long idEx, String tipoExercicio, String exercicio, int serie, int peso, int repeticao) {
         emf = Persistence.createEntityManagerFactory("PTech_PU");
         em = emf.createEntityManager();
@@ -52,7 +48,26 @@ public class ExercicioModel {
         ex.setSerie(serie);
         ex.setRepeticao(repeticao);
         ex.setPeso(peso);
+
+        commitAndClose();
+    }
+
+    public void insertExercicio(long idAluno, String tipoExercicio, String exercicio, int numSerie, int numRepeticao, int numPeso) {
+        emf = Persistence.createEntityManagerFactory("PTech_PU");
+        em = emf.createEntityManager();
+        et = em.getTransaction();
+        et.begin();
+
+        Exercicio ex = new Exercicio();
+        ex.setTipo(tipoExercicio);
+        ex.setExercicio(exercicio);
+        ex.setSerie(numSerie);
+        ex.setRepeticao(numRepeticao);
+        ex.setPeso(numPeso);
         
+
+        Aluno aluno = em.find(Aluno.class, idAluno);
+        aluno.addExercicio(ex);
         commitAndClose();
     }
 
