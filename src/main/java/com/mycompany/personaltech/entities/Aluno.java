@@ -19,6 +19,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -55,6 +56,10 @@ public class Aluno implements Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name = "DT_NASCIMENTO", nullable = true)
     private Date dataNascimento;
+    
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = true)
+    @JoinColumn(name = "ID_MEDSTATUS", referencedColumnName = "ID")
+    private MedStatus medStatus;
 
     @Embedded
     private Endereco endereco;
@@ -63,6 +68,11 @@ public class Aluno implements Serializable {
             cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "ID_ALUNO", referencedColumnName = "ID")
     private List<Exercicio> exercicios;
+    
+    @OneToMany(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "ID_ALUNO", referencedColumnName = "ID")
+    private List<Avaliacao> avaliacoes;
 
     public Long getId() {
         return id;
@@ -174,6 +184,38 @@ public class Aluno implements Serializable {
         this.exercicios.remove(ex);
     }
 
+    public MedStatus getMedStatus() {
+        return medStatus;
+    }
+
+    public void setMedStatus(MedStatus medStatus) {
+        this.medStatus = medStatus;
+    }
+
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
+    }
+
+    public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+        for (Avaliacao avaliacao : avaliacoes) {
+            addAvaliacao(avaliacao);
+        }
+    }
+    
+    public void addAvaliacao(Avaliacao avaliacao) {
+        if (this.avaliacoes == null) {
+            this.avaliacoes = new ArrayList<>();
+        }
+        this.avaliacoes.add(avaliacao);
+    }
+    
+    public void remAvaliacao(Avaliacao avaliacao) {
+        if (this.avaliacoes == null) {
+            return;
+        }
+        this.avaliacoes.remove(avaliacao);
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -198,10 +240,4 @@ public class Aluno implements Serializable {
     public String toString() {
         return "com.mycompany.persoanaltech.entities.Aluno[ id=" + id + " ]";
     }
-
-    public void setDataNascimento(String dataNascimento) {
-        Date date = new Date();
-        // TODO
-    }
-
 }
