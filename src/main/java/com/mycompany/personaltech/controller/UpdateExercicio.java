@@ -73,24 +73,7 @@ public class UpdateExercicio extends HttpServlet {
 
         ExercicioModel exm = new ExercicioModel();
         exm.editExercicio(idAluno, idEx,tipoExercicio,exercicio, numSerie, numPeso, numRepeticao);
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet UpdateExercicio</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet UpdateExercicio at " + request.getContextPath() + "</h1>");
-            out.println(idAluno);
-            out.println(idEx);
-            out.println(exercicio);
-            out.println(serie);
-            out.println(peso);
-            out.println(repeticao);
-            out.println("</body>");
-            out.println("</html>");
-        }
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
