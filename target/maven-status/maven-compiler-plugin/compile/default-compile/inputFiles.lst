@@ -20,6 +20,7 @@
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/models/RemoverAlunoModel.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/JSONObject.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/entities/Avaliacao.java
+/home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/controller/CadastroEx.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/Cookie.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/models/RemoverPersonalModel.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/models/JPAUtil.java
@@ -43,3 +44,4 @@
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/controller/ActionsAluno.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/listeners/NewServletListener.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/JSONWriter.java
+/home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/controller/CadastrarExercicio.java

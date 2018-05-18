@@ -2,6 +2,7 @@ com/mycompany/personaltech/entities/Exercicio.class
 org/json/JSONObject.class
 com/mycompany/personaltech/controller/SettingsPersonal.class
 com/mycompany/personaltech/controller/LoginController.class
+com/mycompany/personaltech/controller/CadastrarExercicio.class
 com/mycompany/personaltech/entities/Avaliacao.class
 org/json/JSONArray.class
 org/json/JSONString.class
@@ -18,6 +19,7 @@ com/mycompany/personaltech/controller/HomeButtonController.class
 com/mycompany/personaltech/entities/Endereco.class
 com/mycompany/personaltech/entities/Aluno.class
 com/mycompany/personaltech/models/UpdateModel.class
+com/mycompany/personaltech/controller/CadastroEx.class
 com/mycompany/personaltech/entities/Avaliacao_.class
 com/mycompany/personaltech/entities/Endereco_.class
 com/mycompany/personaltech/models/ExercicioModel.class
