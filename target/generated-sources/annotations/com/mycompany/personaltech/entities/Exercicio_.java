@@ -4,11 +4,7 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-<<<<<<< HEAD
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-05-17T15:22:57")
-=======
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-05-17T11:43:53")
->>>>>>> feat|Aval|MedStatus
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-05-17T22:41:53")
 @StaticMetamodel(Exercicio.class)
 public class Exercicio_ { 
 

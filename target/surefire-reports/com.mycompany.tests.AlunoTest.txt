@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.mycompany.tests.AlunoTest
 -------------------------------------------------------------------------------
-<<<<<<< HEAD
-Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.872 sec
-=======
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.624 sec
->>>>>>> feat|Aval|MedStatus
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 38.028 sec

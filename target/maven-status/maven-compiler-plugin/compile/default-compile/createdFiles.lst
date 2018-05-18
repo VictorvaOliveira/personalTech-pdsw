@@ -2,11 +2,8 @@ com/mycompany/personaltech/entities/Exercicio.class
 org/json/JSONObject.class
 com/mycompany/personaltech/controller/SettingsPersonal.class
 com/mycompany/personaltech/controller/LoginController.class
-<<<<<<< HEAD
 com/mycompany/personaltech/controller/CadastrarExercicio.class
-=======
 com/mycompany/personaltech/entities/Avaliacao.class
->>>>>>> feat|Aval|MedStatus
 org/json/JSONArray.class
 org/json/JSONString.class
 com/mycompany/personaltech/controller/ReturnAlunos.class
@@ -17,11 +14,12 @@ org/json/JSONObject$Null.class
 com/mycompany/personaltech/entities/Aluno_.class
 com/mycompany/personaltech/entities/Exercicio_.class
 com/mycompany/personaltech/controller/CadastroUser.class
-com/mycompany/personaltech/controller/HomeButtonController.class
 com/mycompany/personaltech/controller/UpdateController.class
-com/mycompany/personaltech/entities/Aluno.class
+com/mycompany/personaltech/controller/HomeButtonController.class
 com/mycompany/personaltech/entities/Endereco.class
+com/mycompany/personaltech/entities/Aluno.class
 com/mycompany/personaltech/models/UpdateModel.class
+com/mycompany/personaltech/controller/CadastroEx.class
 com/mycompany/personaltech/entities/Avaliacao_.class
 com/mycompany/personaltech/entities/Endereco_.class
 com/mycompany/personaltech/models/ExercicioModel.class
@@ -40,17 +38,17 @@ com/mycompany/personaltech/listeners/NewServletListener.class
 com/mycompany/personaltech/entities/MedStatus.class
 com/mycompany/personaltech/controller/ActionsAluno.class
 org/json/CookieList.class
-org/json/Cookie.class
 org/json/JSONTokener.class
+org/json/Cookie.class
 com/mycompany/personaltech/entities/PersonalTrainer_.class
 com/mycompany/personaltech/entities/PersonalTrainer.class
 com/mycompany/personaltech/models/RemoverAlunoModel.class
-com/mycompany/personaltech/controller/ReturnExercicios.class
 com/mycompany/personaltech/entities/NomeExercicio.class
-org/json/JSONException.class
+com/mycompany/personaltech/controller/ReturnExercicios.class
 com/mycompany/personaltech/models/LoginPersonalModel.class
-org/json/XML.class
+org/json/JSONException.class
 org/json/XMLTokener.class
+org/json/XML.class
 com/mycompany/personaltech/controller/CloseUserSession.class
 org/json/CDL.class
 com/mycompany/personaltech/controller/UpdateExercicio.class
