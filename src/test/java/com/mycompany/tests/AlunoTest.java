@@ -1,8 +1,10 @@
 package com.mycompany.tests;
 
 import com.mycompany.personaltech.entities.Aluno;
+import com.mycompany.personaltech.entities.Avaliacao;
 import com.mycompany.personaltech.entities.Endereco;
 import com.mycompany.personaltech.entities.Exercicio;
+import com.mycompany.personaltech.entities.MedStatus;
 import com.mycompany.personaltech.entities.NomeExercicio;
 import com.mycompany.personaltech.entities.PersonalTrainer;
 import com.mycompany.personaltech.entities.TipoExercicio;
@@ -136,12 +138,12 @@ public class AlunoTest {
         ex.setPeso(10);
 
         aluno.addExercicio(ex);
-//
+
         aluno.setEndereco(end);
         PersonalTrainer pt = em.find(PersonalTrainer.class, (long) 1); // carlos CB
         pt.addAluno(aluno);
         em.persist(aluno);
-//
+
         em.flush();
         assertNotNull(aluno.getId());
     }
@@ -173,6 +175,70 @@ public class AlunoTest {
 
         aluno.setEndereco(end);
         PersonalTrainer pt = em.find(PersonalTrainer.class, (long) 1);  // carlos CB
+        pt.addAluno(aluno);
+        em.persist(aluno);
+
+        em.flush();
+        assertNotNull(aluno.getId());
+    }
+    
+    @Test
+    public void inserirAluno_03() {
+        Aluno aluno = new Aluno();
+        aluno.setNome("JOHN");
+        aluno.setSobrenome("MAYK BRITO");
+        aluno.setCpf("23453421123");
+        aluno.setTipo("A");
+        aluno.setLogin("JOHNLIMA");
+        aluno.setSenha("123");
+        aluno.setEmail("JOHN@LIMA");
+        aluno.setSexo("M");
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, 2000);
+        cal.set(Calendar.MONTH, Calendar.JANUARY);
+        cal.set(Calendar.DAY_OF_MONTH, 10);
+        aluno.setDataNascimento(cal.getTime()); //01/10/2000
+
+        Endereco end = new Endereco();
+        end.setLogradouro("RUA DO CORDEIRO");
+        end.setBairro("CORDEIRO");
+        end.setNumero(666);
+        end.setCep("123456-88");
+        end.setCidade("RECIFE");
+        end.setEstado("PERNAMBUCO");
+        aluno.setEndereco(end);
+        
+        Exercicio ex = new Exercicio();
+        ex.setTipo("PEITORAL");
+        ex.setExercicio("PEIT_SUP_KINESIS");
+        ex.setSerie(3);
+        ex.setRepeticao(30);
+        ex.setPeso(10);
+        aluno.addExercicio(ex);
+        
+        Avaliacao av = new Avaliacao();
+        av.setPeso(78.5);
+        av.setAltura(1.7);
+        av.setPressaoArtAtual("120/80mmHg");
+        av.setObs("Qualquer observação");
+        cal.set(Calendar.YEAR, 2000);
+        cal.set(Calendar.MONTH, Calendar.JANUARY);
+        cal.set(Calendar.DAY_OF_MONTH, 10);
+        av.setDataAvaliacao(cal.getTime());
+        aluno.addAvaliacao(av);
+        
+        MedStatus ms = new MedStatus();
+        ms.setDiabetes("Tipo_1");
+        ms.setProbCardiaco(true);
+        ms.setObsProbCardiaco("É um problema sério");
+        ms.setProbOsseo(true);
+        ms.setObsprobOsseo("É um problema nos ossos");
+        ms.setProbPressaoAterial("Hipertesão");
+        ms.setObsProbPressaoAterial("É um problema da pesada");
+        aluno.setMedStatus(ms);
+        
+
+        PersonalTrainer pt = em.find(PersonalTrainer.class, (long) 1); // carlos CB
         pt.addAluno(aluno);
         em.persist(aluno);
 
