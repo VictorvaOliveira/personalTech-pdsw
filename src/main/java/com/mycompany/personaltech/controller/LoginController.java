@@ -5,8 +5,11 @@
  */
 package com.mycompany.personaltech.controller;
 
+import com.mycompany.personaltech.entities.Aluno;
+import com.mycompany.personaltech.models.GettersModel;
 import com.mycompany.personaltech.models.LoginPersonalModel;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +22,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author john
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
+@WebServlet(name = "LoginController", urlPatterns = {"/view/LoginController"})
 @MultipartConfig
 public class LoginController extends HttpServlet {
 
@@ -40,6 +43,7 @@ public class LoginController extends HttpServlet {
         String tipo = request.getParameter("tipoUsuarioLogin");
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
+        List<Aluno> alunos = null;
 
         LoginPersonalModel lpm = new LoginPersonalModel();
         boolean result = lpm.log(login, senha, tipo);
@@ -48,18 +52,20 @@ public class LoginController extends HttpServlet {
             session.setAttribute("user", login);
             session.setAttribute("logged", true);
             session.setAttribute("tipo", tipo);
-            
+
             String sId = session.getId();
             System.out.println("ID SESSÃO: " + sId);
             if (tipo.equals("P")) {
-                response.sendRedirect("view/welcomep.jsp");
+                GettersModel gm = new GettersModel();
+                alunos = gm.getAlunos(login);
+                request.setAttribute("alunos", alunos);
+                request.getRequestDispatcher("welcomep.jsp").forward(request, response);
             } else if (tipo.equals("A")) {
-                response.sendRedirect("view/welcomea.jsp");
+                response.sendRedirect("welcomea.jsp");
             }
         } else {
-            response.sendRedirect("view/wronglogin.jsp");
+            response.sendRedirect("wronglogin.jsp");
         }
-        return;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

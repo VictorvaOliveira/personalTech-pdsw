@@ -4,6 +4,7 @@
 <title>PT|Bem-vindo</title>
 </head>
 <body>
+    <c:out value="${requestScope.alunos1}"/>
     <%@ include file="navbar.jspf" %>
     <script src="loginButton.js"></script>
     <div class="container">
@@ -36,7 +37,7 @@
                     </a> Excluir usuário ${sessionScope.user}
                 </p>
             </c:if>
-
+            
             <c:if test="${requestScope.alunos != null}">
                 <table class="table table-bordered">
                     <thead>

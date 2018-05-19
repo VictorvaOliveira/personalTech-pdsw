@@ -29,20 +29,20 @@ public class Avaliacao implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "NUM_PESO", length = 10, nullable = true)
+    @Column(name = "NUM_PESO", length = 10, nullable = false)
     private Double peso;
 
-    @Column(name = "NUM_ALTURA", length = 10, nullable = true)
+    @Column(name = "NUM_ALTURA", length = 10, nullable = false)
     private Double altura;
 
-    @Column(name = "TXT_PRESSAOART", length = 10, nullable = true)
+    @Column(name = "TXT_PRESSAOART", length = 10, nullable = false)
     private String pressaoArtAtual;
 
     @Column(name = "TXT_OBS", length = 5000, nullable = true)
     private String obs;
     
     @Temporal(TemporalType.DATE)
-    @Column(name = "DT_NASCIMENTO", nullable = true)
+    @Column(name = "DT_AVALIACAO", nullable = false)
     private Date dataAvaliacao;
 
     public Long getId() {

@@ -8,8 +8,10 @@ package com.mycompany.personaltech.controller;
 import com.mycompany.personaltech.entities.Aluno;
 import com.mycompany.personaltech.entities.TipoExercicio;
 import com.mycompany.personaltech.models.ExercicioModel;
+import com.mycompany.personaltech.models.GettersModel;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -71,13 +73,12 @@ public class CadastrarExercicio extends HttpServlet {
 
         ExercicioModel exm = new ExercicioModel();
         exm.insertExercicio(idAluno, tipoExercicio, exercicio, numSerie, numRepeticao, numPeso);
-        response.sendRedirect("welcomep.jsp");
-//        try{
-//            request.getRequestDispatcher("index.jsp");
-//        }catch(Exception e ){
-//            request.getRequestDispatcher("cadastrarExercicio.jsp");
-//        }
         
+        List<Aluno> alunos = null;
+        GettersModel gm = new GettersModel();
+        alunos = gm.getAlunos((String) request.getSession().getAttribute("user"));
+        request.setAttribute("alunos", alunos);
+        request.getRequestDispatcher("welcomep.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
