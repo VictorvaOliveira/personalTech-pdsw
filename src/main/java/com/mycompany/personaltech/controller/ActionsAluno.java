@@ -74,12 +74,6 @@ public class ActionsAluno extends HttpServlet {
         } else {
             request.getRequestDispatcher("cadastro.jsp").forward(request, response);
         }
-//        if (result) {
-//            request.getRequestDispatcher("cadastro.jsp").forward(request, response);
-
-//        } else {
-//            request.getRequestDispatcher("index.jsp").forward(request, response);
-//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

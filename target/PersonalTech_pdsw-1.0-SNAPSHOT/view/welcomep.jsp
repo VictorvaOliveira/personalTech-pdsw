@@ -60,8 +60,8 @@
                                         <button title="Editar" class="btn btn-info btn-xs" value="editar" name="editar"><span class="glyphicon glyphicon-pencil"></span></button>
                                         <button title="Avaliar" class="btn btn-info btn-xs" value="avaliar" name="avaliar"><span class="glyphicon glyphicon-copy"></span></button>
                                         <button title="Estatísticas" class="btn btn-info btn-xs" value="stats" name="stats"><span class="glyphicon glyphicon-stats"></span></button>
-                                        <button title="Status Médico" class="btn btn-info btn-xs" value="medstatus" name="medstatus"><span class=" glyphicon glyphicon-heart-empty"></span></button>
-                                        <button title="Remover" class="btn btn-danger btn-xs" value="remover" name="remover"><span class=" glyphicon glyphicon-remove"></span></button>
+                                        <button title="Status Médico" class="btn btn-info btn-xs" value="medstatus" name="medstatus"><span class="glyphicon glyphicon-heart-empty"></span></button>
+                                        <button title="Remover" class="btn btn-danger btn-xs" value="remover" name="remover"><span class="glyphicon glyphicon-remove"></span></button>
                                     </form>
                                 </td>
                             </tr>

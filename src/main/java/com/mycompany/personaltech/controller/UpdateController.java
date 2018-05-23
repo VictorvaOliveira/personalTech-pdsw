@@ -7,12 +7,14 @@ package com.mycompany.personaltech.controller;
 
 import com.mycompany.personaltech.entities.Aluno;
 import com.mycompany.personaltech.entities.Endereco;
+import com.mycompany.personaltech.models.GettersModel;
 import com.mycompany.personaltech.models.UpdateModel;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -89,7 +91,13 @@ public class UpdateController extends HttpServlet {
 
         UpdateModel um = new UpdateModel();
         um.updateAluno(aluno, currentLogin);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        
+        List<Aluno> alunos = null;
+        GettersModel gm = new GettersModel();
+        alunos = gm.getAlunos((String) request.getSession().getAttribute("user"));
+        request.setAttribute("alunos", alunos);
+        
+        request.getRequestDispatcher("welcomep.jsp").forward(request, response);
 
     }
 
