@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="11" failures="0" name="com.mycompany.tests.AlunoTest" time="18.106" errors="0" skipped="0">
+<testsuite tests="11" failures="0" name="com.mycompany.tests.AlunoTest" time="17.492" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/home/john/jdk1.8.0_161/jre/lib/amd64"/>
@@ -62,15 +62,15 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.mycompany.tests.AlunoTest" name="getAllAlunos_01" time="0.6"/>
-  <testcase classname="com.mycompany.tests.AlunoTest" name="getAllPersonalis_01" time="0.005"/>
-  <testcase classname="com.mycompany.tests.AlunoTest" name="getTotallAlunos_01" time="0.054"/>
-  <testcase classname="com.mycompany.tests.AlunoTest" name="TEST_01" time="0.082"/>
-  <testcase classname="com.mycompany.tests.AlunoTest" name="TEST_02" time="0.049"/>
-  <testcase classname="com.mycompany.tests.AlunoTest" name="TEST_03" time="0.027"/>
-  <testcase classname="com.mycompany.tests.AlunoTest" name="editAluno_01" time="0.051"/>
-  <testcase classname="com.mycompany.tests.AlunoTest" name="inserirAluno_01" time="0.09"/>
-  <testcase classname="com.mycompany.tests.AlunoTest" name="inserirAluno_02" time="0.055"/>
-  <testcase classname="com.mycompany.tests.AlunoTest" name="inserirAluno_03" time="0.08"/>
-  <testcase classname="com.mycompany.tests.AlunoTest" name="addExercicio_01" time="0.056"/>
+  <testcase classname="com.mycompany.tests.AlunoTest" name="getAllAlunos_01" time="0.409"/>
+  <testcase classname="com.mycompany.tests.AlunoTest" name="getAllPersonalis_01" time="0.004"/>
+  <testcase classname="com.mycompany.tests.AlunoTest" name="getTotallAlunos_01" time="0.107"/>
+  <testcase classname="com.mycompany.tests.AlunoTest" name="TEST_01" time="0.135"/>
+  <testcase classname="com.mycompany.tests.AlunoTest" name="TEST_02" time="0.066"/>
+  <testcase classname="com.mycompany.tests.AlunoTest" name="TEST_03" time="0.028"/>
+  <testcase classname="com.mycompany.tests.AlunoTest" name="editAluno_01" time="0.037"/>
+  <testcase classname="com.mycompany.tests.AlunoTest" name="inserirAluno_01" time="0.257"/>
+  <testcase classname="com.mycompany.tests.AlunoTest" name="inserirAluno_02" time="0.077"/>
+  <testcase classname="com.mycompany.tests.AlunoTest" name="inserirAluno_03" time="0.137"/>
+  <testcase classname="com.mycompany.tests.AlunoTest" name="addExercicio_01" time="0.051"/>
 </testsuite>

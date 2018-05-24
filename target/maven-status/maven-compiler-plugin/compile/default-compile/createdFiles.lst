@@ -25,6 +25,7 @@ com/mycompany/personaltech/entities/Endereco_.class
 com/mycompany/personaltech/models/ExercicioModel.class
 org/json/HTTPTokener.class
 org/json/HTTP.class
+com/mycompany/personaltech/controller/CadastroStatusMedico.class
 com/mycompany/personaltech/controller/ValidacaoController.class
 com/mycompany/personaltech/models/RemoverPersonalModel.class
 com/mycompany/personaltech/entities/MedStatus_.class
