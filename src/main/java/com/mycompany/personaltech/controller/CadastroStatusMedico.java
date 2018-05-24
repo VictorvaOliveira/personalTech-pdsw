@@ -36,6 +36,10 @@ public class CadastroStatusMedico extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         
         
+        Aluno aluno = (Aluno) request.getSession().getAttribute("aluno");
+        
+        
+        
         String diabetes = request.getParameter("diabetes");
         String pressao = request.getParameter("pressao");
         String obsPresArt = request.getParameter("obsPresArt");
@@ -43,6 +47,7 @@ public class CadastroStatusMedico extends HttpServlet {
         String obsProbCard = request.getParameter("obsProbCard");
         String osseo = request.getParameter("osseo");
         String obsProbOsseo = request.getParameter("obsProbOsseo");
+        
         
         
         
@@ -63,6 +68,7 @@ public class CadastroStatusMedico extends HttpServlet {
             out.println("<h1>Servlet CadastroStatusMedico at " + obsProbCard + "</h1>");
             out.println("<h1>Servlet CadastroStatusMedico at " + osseo + "</h1>");
             out.println("<h1>Servlet CadastroStatusMedico at " + obsProbOsseo + "</h1>");
+            out.println("<h1>Servlet CadastroStatusMedico at " + aluno.getNome() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

@@ -4,7 +4,6 @@
 <title>PT|Bem-vindo</title>
 </head>
 <body>
-    <c:out value="${requestScope.alunos1}"/>
     <%@ include file="navbar.jspf" %>
     <script src="loginButton.js"></script>
     <div class="container">
