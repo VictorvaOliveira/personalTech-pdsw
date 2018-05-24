@@ -11,6 +11,7 @@ import com.mycompany.personaltech.models.ExercicioModel;
 import com.mycompany.personaltech.models.GettersModel;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -52,7 +53,12 @@ public class ActionsExercicio extends HttpServlet {
         if (remover != null) {
             exm = new ExercicioModel();
             exm.removeExercicio(idEx, idAl);
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+
+            List<Aluno> alunos = null;
+            gm = new GettersModel();
+            alunos = gm.getAlunos((String) request.getSession().getAttribute("user"));
+            request.setAttribute("alunos", alunos);
+            request.getRequestDispatcher("welcomep.jsp").forward(request, response);
         } else if (editar != null) {
             gm = new GettersModel();
             Aluno aluno = gm.getAlunoForUpdate(loginAluno);

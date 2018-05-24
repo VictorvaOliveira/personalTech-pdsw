@@ -44,6 +44,7 @@ public class ActionsAluno extends HttpServlet {
         String editar = request.getParameter("editar");
         String visualizar = request.getParameter("visualizar");
         String loginAluno = request.getParameter("loginAluno");
+        String medstatus = request.getParameter("medstatus");
         System.out.println("ACTION ON: " + loginAluno);
         GettersModel gm = new GettersModel();
         if (remover != null) {
@@ -65,15 +66,14 @@ public class ActionsAluno extends HttpServlet {
             request.getSession().setAttribute("aluno", aluno);
             request.setAttribute("aluno", aluno);
             request.getRequestDispatcher("visAluno.jsp").forward(request, response);
+        } else if (medstatus != null) {
+            Aluno aluno = gm.getAluno(loginAluno);
+            request.getSession().setAttribute("aluno", aluno);
+            request.setAttribute("aluno", aluno);
+            request.getRequestDispatcher("visMedStatus.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("cadastro.jsp").forward(request, response);
         }
-//        if (result) {
-//            request.getRequestDispatcher("cadastro.jsp").forward(request, response);
-
-//        } else {
-//            request.getRequestDispatcher("index.jsp").forward(request, response);
-//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
