@@ -11,7 +11,7 @@
     <div class="container">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
-            <form action="LoginController" method="post">
+            <form action="../LoginController" method="post">
                 <div class="form-group">
                     <label for="tipoUsuarioLogin">Tipo de usuário: </label>
                     <select class="form-control" id="tipoUsuarioLogin" name="tipoUsuarioLogin">
