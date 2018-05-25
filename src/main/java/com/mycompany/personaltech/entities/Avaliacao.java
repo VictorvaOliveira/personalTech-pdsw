@@ -38,7 +38,7 @@ public class Avaliacao implements Serializable {
     @Column(name = "TXT_PRESSAOART", length = 10, nullable = false)
     private String pressaoArtAtual;
 
-    @Column(name = "TXT_OBS", length = 5000, nullable = true)
+    @Column(name = "TXT_OBS", length = 100, nullable = true)
     private String obs;
     
     @Temporal(TemporalType.DATE)

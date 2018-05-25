@@ -11,6 +11,12 @@
     <div class="container">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
+            <c:if test="${requestScope.erro == true}">
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Erro!</strong> Tipo de usuário, login ou senha estão errados.
+                </div>
+            </c:if>
             <form action="LoginController" method="post">
                 <div class="form-group">
                     <label for="tipoUsuarioLogin">Tipo de usuário: </label>
