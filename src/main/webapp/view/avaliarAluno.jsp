@@ -28,7 +28,7 @@
             <div class="form-group">
                 <label for="pressao" class="control-label col-sm-2">Pressão Aterial (mmHg):</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="120/80" id="pressao" name="pressao" required/>
+                    <input type="text" class="form-control" placeholder="120/80mmHg" id="pressao" name="pressao" required/>
                 </div>
             </div>
 

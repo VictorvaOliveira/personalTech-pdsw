@@ -42,6 +42,7 @@ org/json/CookieList.class
 org/json/JSONTokener.class
 org/json/Cookie.class
 com/mycompany/personaltech/entities/PersonalTrainer_.class
+com/mycompany/personaltech/controller/CadastroAvaliacao.class
 com/mycompany/personaltech/entities/PersonalTrainer.class
 com/mycompany/personaltech/models/RemoverAlunoModel.class
 com/mycompany/personaltech/entities/NomeExercicio.class
