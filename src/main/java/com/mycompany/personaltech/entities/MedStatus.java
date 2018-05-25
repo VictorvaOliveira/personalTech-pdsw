@@ -29,7 +29,7 @@ public class MedStatus implements Serializable {
     @Column(name = "TXT_DIABETES", length = 10, nullable = false)
     private String diabetes;
 
-    @Column(name = "TXT_PROBPRESSAOART", length = 10, nullable = false)
+    @Column(name = "TXT_PROBPRESSAOART", length = 100, nullable = false)
     private String probPressaoAterial;
 
     @Column(name = "TXT_OBSPRESSAOART", length = 100, nullable = true)

@@ -6,8 +6,10 @@
 package com.mycompany.personaltech.controller;
 
 import com.mycompany.personaltech.entities.Aluno;
+import com.mycompany.personaltech.entities.MedStatus;
+import com.mycompany.personaltech.models.GettersModel;
+import com.mycompany.personaltech.models.StatusMedicoModel;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,37 +37,40 @@ public class CadastroStatusMedico extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         
-        
+        GettersModel gm = new GettersModel();
+
+        Aluno aluno = (Aluno) request.getSession().getAttribute("aluno");
+
         String diabetes = request.getParameter("diabetes");
         String pressao = request.getParameter("pressao");
         String obsPresArt = request.getParameter("obsPresArt");
         String cardiaco = request.getParameter("cardiaco");
+        boolean card = false;
+        if (cardiaco.equals("positivo")) {
+            card = true;
+        }
         String obsProbCard = request.getParameter("obsProbCard");
         String osseo = request.getParameter("osseo");
-        String obsProbOsseo = request.getParameter("obsProbOsseo");
-        
-        
-        
-        
-        
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CadastroStatusMedico</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CadastroStatusMedico at " + diabetes + "</h1>");
-            out.println("<h1>Servlet CadastroStatusMedico at " + pressao + "</h1>");
-            out.println("<h1>Servlet CadastroStatusMedico at " + obsPresArt + "</h1>");
-            out.println("<h1>Servlet CadastroStatusMedico at " + cardiaco + "</h1>");
-            out.println("<h1>Servlet CadastroStatusMedico at " + obsProbCard + "</h1>");
-            out.println("<h1>Servlet CadastroStatusMedico at " + osseo + "</h1>");
-            out.println("<h1>Servlet CadastroStatusMedico at " + obsProbOsseo + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        boolean osso = false;
+        if (osseo.equals("positivo")) {
+            osso = true;
         }
+        String obsProbOsseo = request.getParameter("obsProbOsseo");
+
+        StatusMedicoModel smm = new StatusMedicoModel();
+        MedStatus medStatus = smm.cadastrar(aluno.getId(), diabetes, pressao, obsProbOsseo, card, obsProbCard, osso, obsProbOsseo);
+
+        // Sets Aluno in the session
+        aluno = gm.getAluno(aluno.getLogin());
+        request.getSession().setAttribute("aluno", aluno);
+
+        /*
+        Neste ponto do sistema, o aluno já está salvo na sessão, logo não há necessidade
+        de criar um atributo no request ou mesmo um novo atributo na sessão.
+        Basta usar o atributo medStatus existente no atributo aluno da sessão
+         */
+        request.getRequestDispatcher("visMedStatus.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

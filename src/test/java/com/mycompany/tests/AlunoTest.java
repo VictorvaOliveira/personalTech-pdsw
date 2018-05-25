@@ -233,7 +233,7 @@ public class AlunoTest {
         ms.setObsProbCardiaco("É um problema sério");
         ms.setProbOsseo(true);
         ms.setObsprobOsseo("É um problema nos ossos");
-        ms.setProbPressaoAterial("Hipertesão");
+        ms.setProbPressaoAterial("Hipertensão");
         ms.setObsProbPressaoAterial("É um problema da pesada");
         aluno.setMedStatus(ms);
         

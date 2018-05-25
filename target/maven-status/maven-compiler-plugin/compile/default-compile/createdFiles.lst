@@ -53,4 +53,5 @@ org/json/XML.class
 com/mycompany/personaltech/controller/CloseUserSession.class
 org/json/CDL.class
 com/mycompany/personaltech/controller/UpdateExercicio.class
+com/mycompany/personaltech/models/StatusMedicoModel.class
 org/json/JSONML.class

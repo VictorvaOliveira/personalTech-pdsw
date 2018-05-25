@@ -7,8 +7,6 @@ package com.mycompany.personaltech.models;
 
 import com.mycompany.personaltech.entities.Aluno;
 import com.mycompany.personaltech.entities.Endereco;
-import com.mycompany.personaltech.entities.PersonalTrainer;
-import java.util.List;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

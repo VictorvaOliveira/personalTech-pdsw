@@ -62,15 +62,27 @@ public class ActionsAluno extends HttpServlet {
             request.setAttribute("aluno", aluno);
             request.getRequestDispatcher("updateAluno.jsp").forward(request, response);
         } else if (visualizar != null) {
+            
+            // Sets Aluno in the session
             Aluno aluno = gm.getAluno(loginAluno);
             request.getSession().setAttribute("aluno", aluno);
+            
             request.setAttribute("aluno", aluno);
             request.getRequestDispatcher("visAluno.jsp").forward(request, response);
         } else if (medstatus != null) {
+                        
+            // Sets Aluno in the session
             Aluno aluno = gm.getAluno(loginAluno);
             request.getSession().setAttribute("aluno", aluno);
-            request.setAttribute("aluno", aluno);
+            
             request.getRequestDispatcher("visMedStatus.jsp").forward(request, response);
+        } else if (avaliar != null) {
+                        
+            // Sets Aluno in the session
+            Aluno aluno = gm.getAluno(loginAluno);
+            request.getSession().setAttribute("aluno", aluno);
+            
+            request.getRequestDispatcher("avaliarAluno.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("cadastro.jsp").forward(request, response);
         }
