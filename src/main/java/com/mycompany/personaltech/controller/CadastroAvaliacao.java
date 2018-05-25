@@ -5,26 +5,20 @@
  */
 package com.mycompany.personaltech.controller;
 
-import com.mycompany.personaltech.entities.Aluno;
-import com.mycompany.personaltech.models.GettersModel;
-import com.mycompany.personaltech.models.LoginPersonalModel;
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author john
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/view/LoginController"})
-@MultipartConfig
-public class LoginController extends HttpServlet {
+@WebServlet(name = "CadastroAvaliacao", urlPatterns = {"/view/CadastroAvaliacao"})
+public class CadastroAvaliacao extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,34 +33,28 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-
-        String tipo = request.getParameter("tipoUsuarioLogin");
-        String login = request.getParameter("login");
-        String senha = request.getParameter("senha");
-
-        LoginPersonalModel lpm = new LoginPersonalModel();
-        boolean result = lpm.log(login, senha, tipo);
-        //senha = "erased";
-        List<Aluno> alunos = null;
-        if (result) {
-            HttpSession session = request.getSession();
-            session.setAttribute("user", login);
-            session.setAttribute("logged", true);
-            session.setAttribute("tipo", tipo);
-
-            String sId = session.getId();
-            System.out.println("ID SESSÃO: " + sId);
-            if (tipo.equals("P")) {
-                GettersModel gm = new GettersModel();
-                alunos = gm.getAlunos(login);
-                request.setAttribute("alunos", alunos);
-                request.getRequestDispatcher("welcomep.jsp").forward(request, response);
-            } else if (tipo.equals("A")) {
-                response.sendRedirect("welcomea.jsp");
-            }
-        } else {
-            request.setAttribute("erro", true);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+        
+        String peso = request.getParameter("peso");
+        String altura = request.getParameter("altura");
+        String pressao = request.getParameter("pressao");
+        String obspressao = request.getParameter("obspressao");
+        String dataatual = request.getParameter("dataatual");
+        
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet CadastroAvaliacao</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet CadastroAvaliacao at " + peso + "</h1>");
+            out.println("<h1>Servlet CadastroAvaliacao at " + altura + "</h1>");
+            out.println("<h1>Servlet CadastroAvaliacao at " + pressao + "</h1>");
+            out.println("<h1>Servlet CadastroAvaliacao at " + obspressao + "</h1>");
+            out.println("<h1>Servlet CadastroAvaliacao at " + dataatual + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

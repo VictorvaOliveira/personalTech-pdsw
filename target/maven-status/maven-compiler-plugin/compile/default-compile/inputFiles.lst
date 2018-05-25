@@ -27,6 +27,7 @@
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/controller/ActionsAluno.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/models/UpdateModel.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/controller/ActionsExercicio.java
+/home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/controller/CadastroAvaliacao.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/entities/Aluno.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/controller/CadastroUser.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/entities/PersonalTrainer.java
