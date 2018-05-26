@@ -8,7 +8,7 @@
     <%@ include file="navbar.jspf" %>
     <script src="loginButton.js"></script>
     <div class="container">
-        <form class="form-horizontal" method="post" action="../CadastroUser">
+        <form class="form-horizontal" method="post" action="CadastroUser">
             <div class="col-sm-2"></div><div class="col-sm-10"><h3>Dados pessoais</h3></div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="nome">Nome:</label>
@@ -160,7 +160,7 @@
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-success">Cadastrar</button>
                     <button type="reset" class="btn btn-warning">Reset</button>
-                    <a href="index.jsp"><button type="button" class="btn btn-danger">Cancelar</button></a>
+                    <a href="welcomep.jsp"><button type="button" class="btn btn-danger">Cancelar</button></a>
                 </div>
             </div>
         </form> 

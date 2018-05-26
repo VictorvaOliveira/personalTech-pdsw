@@ -31,7 +31,7 @@ import static org.eclipse.persistence.jpa.jpql.Assert.fail;
  *
  * @author john
  */
-@WebServlet(name = "CadastroUser", urlPatterns = {"/CadastroUser"})
+@WebServlet(name = "CadastroUser", urlPatterns = {"/view/CadastroUser"})
 public class CadastroUser extends HttpServlet {
 
     private static EntityManagerFactory emf;
@@ -79,7 +79,7 @@ public class CadastroUser extends HttpServlet {
             try {
                 pt = (PersonalTrainer) query.getSingleResult();
             } catch (NoResultException e) {
-                response.sendRedirect("view/cadastro.jsp");
+                response.sendRedirect("welcomep.jsp");
                 if (pt == null) {
                     return;
                 }
@@ -92,7 +92,7 @@ public class CadastroUser extends HttpServlet {
             em.close();
             emf.close();
         }
-       response.sendRedirect("view/index.jsp"); 
+       response.sendRedirect("welcomep.jsp"); 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

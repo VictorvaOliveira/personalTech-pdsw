@@ -59,7 +59,7 @@ public class LoginController extends HttpServlet {
             if (tipo.equals("P")) {
                 GettersModel gm = new GettersModel();
                 alunos = gm.getAlunos(login);
-                request.setAttribute("alunos", alunos);
+                request.getSession().setAttribute("alunos", alunos);
                 request.getRequestDispatcher("welcomep.jsp").forward(request, response);
             } else if (tipo.equals("A")) {
                 response.sendRedirect("welcomea.jsp");
