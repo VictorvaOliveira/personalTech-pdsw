@@ -7,7 +7,7 @@
     <%@ include file="navbar.jspf" %>
     <script src="loginButton.js"></script>
     <div class="container">
-        <h1>Exercícios de ${requestScope.aluno.getNome()}</h1>
+        <h1>Exercícios de ${sessionScope.aluno.getNome()}</h1>
         <div class="btn-group btn-group-justified">
             <a href="cadastrarExercicio.jsp" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Adicionar Exercícios</a>
         </div> 
@@ -21,7 +21,7 @@
                         <th>Ações</th>
                     </tr>
                 </thead>
-                <c:forEach items="${requestScope.aluno.exercicios}" var="ex">
+                <c:forEach items="${sessionScope.aluno.exercicios}" var="ex">
                     <tr>
                         <td>${ex.getTipo()}</td>
                         <td>${ex.getExercicio()}</td>

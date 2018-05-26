@@ -5,8 +5,14 @@
  */
 package com.mycompany.personaltech.controller;
 
+import static com.mycompany.personaltech.entities.Aluno_.dataNascimento;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,6 +45,14 @@ public class CadastroAvaliacao extends HttpServlet {
         String pressao = request.getParameter("pressao");
         String obspressao = request.getParameter("obspressao");
         String dataatual = request.getParameter("dataatual");
+        
+        
+        Date date = new Date();
+        try {
+            date = new SimpleDateFormat("yyyy-MM-dd").parse(dataatual);
+        } catch (ParseException ex) {
+            Logger.getLogger(CadastroUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
