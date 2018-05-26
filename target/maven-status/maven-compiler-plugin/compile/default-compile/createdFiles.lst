@@ -7,6 +7,7 @@ com/mycompany/personaltech/entities/Avaliacao.class
 org/json/JSONArray.class
 org/json/JSONString.class
 com/mycompany/personaltech/controller/ReturnAlunos.class
+com/mycompany/personaltech/models/AvaliacaoModel.class
 com/mycompany/personaltech/controller/ActionsExercicio.class
 com/mycompany/personaltech/controller/RemoverPersonal.class
 org/json/JSONStringer.class

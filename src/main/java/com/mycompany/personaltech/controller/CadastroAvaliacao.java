@@ -5,9 +5,10 @@
  */
 package com.mycompany.personaltech.controller;
 
-import static com.mycompany.personaltech.entities.Aluno_.dataNascimento;
+import com.mycompany.personaltech.entities.Aluno;
+import com.mycompany.personaltech.entities.Avaliacao;
+import com.mycompany.personaltech.models.AvaliacaoModel;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,14 +40,13 @@ public class CadastroAvaliacao extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        
-        String peso = request.getParameter("peso");
-        String altura = request.getParameter("altura");
+
+        double peso = Double.parseDouble(request.getParameter("peso"));
+        double altura = Double.parseDouble(request.getParameter("altura"));
         String pressao = request.getParameter("pressao");
         String obspressao = request.getParameter("obspressao");
+        
         String dataatual = request.getParameter("dataatual");
-        
-        
         Date date = new Date();
         try {
             date = new SimpleDateFormat("yyyy-MM-dd").parse(dataatual);
@@ -54,22 +54,17 @@ public class CadastroAvaliacao extends HttpServlet {
             Logger.getLogger(CadastroUser.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CadastroAvaliacao</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CadastroAvaliacao at " + peso + "</h1>");
-            out.println("<h1>Servlet CadastroAvaliacao at " + altura + "</h1>");
-            out.println("<h1>Servlet CadastroAvaliacao at " + pressao + "</h1>");
-            out.println("<h1>Servlet CadastroAvaliacao at " + obspressao + "</h1>");
-            out.println("<h1>Servlet CadastroAvaliacao at " + dataatual + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        Aluno aluno = (Aluno) request.getSession().getAttribute("aluno");
+        String loginAluno = aluno.getLogin();
+        
+        
+        Avaliacao avaliacao = new Avaliacao(peso, altura, pressao, obspressao, date);
+
+        AvaliacaoModel cam = new AvaliacaoModel();
+        cam.cadastrarAvaliacao(loginAluno, avaliacao);
+        
+        request.getRequestDispatcher("welcomep.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
