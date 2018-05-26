@@ -6,6 +6,7 @@
 package com.mycompany.personaltech.controller;
 
 import com.mycompany.personaltech.entities.Aluno;
+import com.mycompany.personaltech.entities.Exercicio;
 import com.mycompany.personaltech.models.GettersModel;
 import com.mycompany.personaltech.models.LoginPersonalModel;
 import java.io.IOException;
@@ -47,7 +48,9 @@ public class LoginController extends HttpServlet {
         LoginPersonalModel lpm = new LoginPersonalModel();
         boolean result = lpm.log(login, senha, tipo);
         //senha = "erased";
+        GettersModel gm = new GettersModel();
         List<Aluno> alunos = null;
+        List<Exercicio> exercicios = null;
         if (result) {
             HttpSession session = request.getSession();
             session.setAttribute("user", login);
@@ -57,12 +60,14 @@ public class LoginController extends HttpServlet {
             String sId = session.getId();
             System.out.println("ID SESSÃO: " + sId);
             if (tipo.equals("P")) {
-                GettersModel gm = new GettersModel();
                 alunos = gm.getAlunos(login);
                 request.setAttribute("alunos", alunos);
                 request.getRequestDispatcher("welcomep.jsp").forward(request, response);
             } else if (tipo.equals("A")) {
-                response.sendRedirect("welcomea.jsp");
+                Aluno aluno = gm.getAluno(login);
+//                request.getSession().setAttribute("aluno", aluno);
+                request.setAttribute("aluno", aluno);
+                request.getRequestDispatcher("welcomea.jsp").forward(request, response);
             }
         } else {
             request.setAttribute("erro", true);

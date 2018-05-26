@@ -64,22 +64,40 @@ public class GettersModel {
         return null;
     }
 
-    void commitAndClose() {
-        et.commit();
-        em.close();
-        emf.close();
-    }
-
     public Exercicio getExercicio(long idEx) {
         emf = Persistence.createEntityManagerFactory("PTech_PU");
         em = emf.createEntityManager();
         et = em.getTransaction();
         et.begin();
-        
+
         Exercicio ex = em.find(Exercicio.class, (idEx));
         if (ex != null) {
             return ex;
         }
         return null;
     }
+
+    public List<Exercicio> getExercicioPorAluno(String loginAluno) {
+
+        emf = Persistence.createEntityManagerFactory("PTech_PU");
+        em = emf.createEntityManager();
+        et = em.getTransaction();
+        et.begin();
+
+        String jpql = "SELECT a FROM Aluno a WHERE a.login = ?1";
+        Query query = em.createQuery(jpql);
+        query.setParameter(1, loginAluno);
+
+        Aluno aluno = (Aluno) query.getResultList();
+        List<Exercicio> listaDeExercicio = aluno.getExercicios();
+        commitAndClose();
+        return listaDeExercicio;
+    }
+
+    void commitAndClose() {
+        et.commit();
+        em.close();
+        emf.close();
+    }
+
 }

@@ -129,7 +129,7 @@ public class AlunoTest {
         end.setCep("123456-88");
         end.setCidade("RECIFE");
         end.setEstado("PERNAMBUCO");
-        
+
         Exercicio ex = new Exercicio();
         ex.setTipo("PEITORAL");
         ex.setExercicio("PEIT_SUP_KINESIS");
@@ -147,7 +147,7 @@ public class AlunoTest {
         em.flush();
         assertNotNull(aluno.getId());
     }
-    
+
     @Test
     public void inserirAluno_02() {
         Aluno aluno = new Aluno();
@@ -181,7 +181,7 @@ public class AlunoTest {
         em.flush();
         assertNotNull(aluno.getId());
     }
-    
+
     @Test
     public void inserirAluno_03() {
         Aluno aluno = new Aluno();
@@ -207,7 +207,7 @@ public class AlunoTest {
         end.setCidade("RECIFE");
         end.setEstado("PERNAMBUCO");
         aluno.setEndereco(end);
-        
+
         Exercicio ex = new Exercicio();
         ex.setTipo("PEITORAL");
         ex.setExercicio("PEIT_SUP_KINESIS");
@@ -215,7 +215,7 @@ public class AlunoTest {
         ex.setRepeticao(30);
         ex.setPeso(10);
         aluno.addExercicio(ex);
-        
+
         Avaliacao av = new Avaliacao();
         av.setPeso(78.5);
         av.setAltura(1.7);
@@ -226,7 +226,7 @@ public class AlunoTest {
         cal.set(Calendar.DAY_OF_MONTH, 10);
         av.setDataAvaliacao(cal.getTime());
         aluno.addAvaliacao(av);
-        
+
         MedStatus ms = new MedStatus();
         ms.setDiabetes("Tipo_1");
         ms.setProbCardiaco(true);
@@ -236,7 +236,6 @@ public class AlunoTest {
         ms.setProbPressaoAterial("Hipertensão");
         ms.setObsProbPressaoAterial("É um problema da pesada");
         aluno.setMedStatus(ms);
-        
 
         PersonalTrainer pt = em.find(PersonalTrainer.class, (long) 1); // carlos CB
         pt.addAluno(aluno);
@@ -317,6 +316,7 @@ public class AlunoTest {
         assertEquals("NEWALAN", aluno.getLogin());
 
     }
+
 
 //    @Test
 //    public void inserirAluno_02() {
