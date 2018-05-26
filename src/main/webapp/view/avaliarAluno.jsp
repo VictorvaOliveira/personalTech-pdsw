@@ -3,7 +3,7 @@
 <%@ taglib prefix="c"uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="top.jspf" %>
 <script type="text/javascript" src="updateAluno.js"></script>
-<title>PT|Dados médicos</title>
+<title>PT|Avaliação</title>
 </head>
 <body>
     <%@ include file="navbar.jspf" %>

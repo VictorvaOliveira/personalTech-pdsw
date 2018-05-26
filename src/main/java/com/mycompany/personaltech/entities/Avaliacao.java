@@ -45,6 +45,20 @@ public class Avaliacao implements Serializable {
     @Column(name = "DT_AVALIACAO", nullable = false)
     private Date dataAvaliacao;
 
+    public Avaliacao() {
+        
+    }
+
+    public Avaliacao(double peso, double altura, String pressao, String obspressao, Date date) {
+        this.peso = peso;
+        this.altura = altura;
+        this.pressaoArtAtual = pressao;
+        this.obs = obspressao;
+        this.dataAvaliacao = date;
+    }
+    
+    
+
     public Long getId() {
         return id;
     }
