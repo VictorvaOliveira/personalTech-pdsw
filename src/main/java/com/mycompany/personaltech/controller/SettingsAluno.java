@@ -5,27 +5,20 @@
  */
 package com.mycompany.personaltech.controller;
 
-import com.mycompany.personaltech.entities.Aluno;
-import com.mycompany.personaltech.entities.Exercicio;
-import com.mycompany.personaltech.models.GettersModel;
-import com.mycompany.personaltech.models.LoginPersonalModel;
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author john
+ * @author victor
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/view/LoginController"})
-@MultipartConfig
-public class LoginController extends HttpServlet {
+@WebServlet(name = "SettingsAluno", urlPatterns = {"/view/SettingsAluno"})
+public class SettingsAluno extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,40 +33,9 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-
-        String tipo = request.getParameter("tipoUsuarioLogin");
-        String login = request.getParameter("login");
-        String senha = request.getParameter("senha");
-
-        LoginPersonalModel lpm = new LoginPersonalModel();
-        boolean result = lpm.log(login, senha, tipo);
-        //senha = "erased";
-        GettersModel gm = new GettersModel();
-        List<Aluno> alunos = null;
-        List<Exercicio> exercicios = null;
-        if (result) {
-            HttpSession session = request.getSession();
-            session.setAttribute("user", login);
-            session.setAttribute("logged", true);
-            session.setAttribute("tipo", tipo);
-
-            String sId = session.getId();
-            System.out.println("ID SESSÃO: " + sId);
-            if (tipo.equals("P")) {
-                alunos = gm.getAlunos(login);
-                request.getSession().setAttribute("alunos", alunos);
-                request.getRequestDispatcher("welcomep.jsp").forward(request, response);
-            } else if (tipo.equals("A")) {
-                Aluno aluno = gm.getAluno(login);
-                request.getSession().setAttribute("aluno", aluno);
-
-                request.setAttribute("aluno", aluno);
-                request.getRequestDispatcher("welcomea.jsp").forward(request, response);
-            }
-        } else {
-            request.setAttribute("erro", true);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
+        
+        request.setAttribute("settings", true);
+        request.getRequestDispatcher("welcomea.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

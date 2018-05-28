@@ -63,7 +63,7 @@ public class ActionsAluno extends HttpServlet {
                 response.sendRedirect("https://www.youtube.com/watch?v=2LCM4q6KpdQ");
                 return;
             }
-            Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+            Format formatter = new SimpleDateFormat("yyyy-MM-dd");  
             String s = formatter.format(aluno.getDataNascimento());
             request.setAttribute("alunoDataNascimento", s);
             request.setAttribute("aluno", aluno);
