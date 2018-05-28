@@ -13,6 +13,7 @@ import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -53,6 +54,8 @@ public class ActionsAluno extends HttpServlet {
         GettersModel gm = new GettersModel();
         if (remover != null) {
             boolean result = ram.removeAluno(user, loginAluno);
+            List<Aluno> alunos = gm.getAlunos(user);
+            request.getSession().setAttribute("alunos", alunos);
             request.getRequestDispatcher("welcomep.jsp").forward(request, response);
         } else if (editar != null) {
             Aluno aluno = gm.getAlunoForUpdate(loginAluno);
@@ -88,7 +91,7 @@ public class ActionsAluno extends HttpServlet {
 
             Date currentDate = new Date();
             System.out.println(currentDate);
-            
+
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String cDate = sdf.format(currentDate);
             System.out.println(cDate);

@@ -173,7 +173,7 @@
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-success">Cadastrar</button>
                     <button type="reset" class="btn btn-warning">Reset</button>
-                    <a href="index.jsp"><button type="button" class="btn btn-danger">Cancelar</button></a>
+                    <a href="welcomep.jsp"><button type="button" class="btn btn-danger">Cancelar</button></a>
                 </div>
             </div>
         </form> 

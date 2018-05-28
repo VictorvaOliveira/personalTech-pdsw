@@ -3,7 +3,7 @@
 <%@ taglib prefix="c"uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="top.jspf" %>
 <script type="text/javascript" src="updateAluno.js"></script>
-<title>PT|Dados médicos</title>
+<title>PT|Avaliação</title>
 </head>
 <body>
     <%@ include file="navbar.jspf" %>
@@ -49,7 +49,7 @@
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-success">Cadastrar</button>
                     <button type="reset" class="btn btn-warning">Reset</button>
-                    <a href="visMedStatus.jsp"><button type="button" class="btn btn-danger">Cancelar</button></a>
+                    <a href="welcomep.jsp"><button type="button" class="btn btn-danger">Cancelar</button></a>
                 </div>
             </div>
         </form> 

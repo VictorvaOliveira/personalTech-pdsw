@@ -61,7 +61,7 @@ public class LoginController extends HttpServlet {
             System.out.println("ID SESSÃO: " + sId);
             if (tipo.equals("P")) {
                 alunos = gm.getAlunos(login);
-                request.setAttribute("alunos", alunos);
+                request.getSession().setAttribute("alunos", alunos);
                 request.getRequestDispatcher("welcomep.jsp").forward(request, response);
             } else if (tipo.equals("A")) {
                 Aluno aluno = gm.getAluno(login);

@@ -45,6 +45,7 @@
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/controller/RemoverPersonal.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/CDL.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/XMLTokener.java
+/home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/models/AvaliacaoModel.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/listeners/NewServletListener.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/org/json/JSONWriter.java
 /home/john/Documents/PersonalTech_pdsw/src/main/java/com/mycompany/personaltech/controller/CadastrarExercicio.java

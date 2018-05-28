@@ -37,7 +37,7 @@
                 </p>
             </c:if>
             
-            <c:if test="${requestScope.alunos != null}">
+            <c:if test="${sessionScope.alunos != null}">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -47,7 +47,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${requestScope.alunos}" var="a">
+                        <c:forEach items="${sessionScope.alunos}" var="a">
 
                             <tr>
                                 <td>${a.getNome()}</td>
