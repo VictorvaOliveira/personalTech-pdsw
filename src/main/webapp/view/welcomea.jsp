@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="top.jspf" %>
 <title>PT|Bem-vindo</title>
 </head>
@@ -6,48 +7,40 @@
     <%@ include file="navbar.jspf" %>
     <script src="loginButton.js"></script>
     <div class="container">
-        <h1>Bem-vindo, <span id="personal">${sessionScope.user}</span>!</h1>
+        <h1>Bem vindo, ${sessionScope.user} !</h1>
         <div class="btn-group btn-group-justified">
-            <a href="#" class="btn btn-primary">Ver Status</a>
+            <a href="ReturnExercicios" class="btn btn-primary"><span class="glyphicon glyphicon-th-list"></span> Listar Exercícios</a>
+            <a href="SettingsAluno" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span> Configurações</a>
         </div> 
-        <div class="well well-lg">       
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>CPF</th>
-                        <th>Peso</th>
-                        <th>IMC</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
-                        <td>john@example.com</td>
-                        <td>
-                            <a href="#" title="Editar"><span class="glyphicon glyphicon-pencil" id="editar"/></a>
-                            <a href="#" title="Avaliar"><span class="glyphicon glyphicon-copy" id="avaliar"/></a>
-                            <a href="#" title="Deletar"><span class="glyphicon glyphicon-remove" id="remover"/></a>
-                            <a href="#" title="Ver Gráfio"><span class="glyphicon glyphicon-stats" id="status"/></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Mary</td>
-                        <td>Moe</td>
-                        <td>mary@example.com</td>
-                        <td>john@example.com</td>
-                        <td>
-                            <a href="#" title="Editar"><span class="glyphicon glyphicon-pencil" id="editar"/></a>
-                            <a href="#" title="Avaliar"><span class="glyphicon glyphicon-copy" id="avaliar"/></a>
-                            <a href="#" title="Deletar"><span class="glyphicon glyphicon-remove" id="remover"/></a>
-                            <a href="#" title="Ver Gráfico"><span class="glyphicon glyphicon-stats" id="status"/></a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+
+        <div class="well well-lg">
+            <c:if test="${requestScope.settings == true}">
+                <form method="post" action="ActionsAluno" name="meuform">   
+                    <input type="hidden" name="loginAluno" value="${aluno.getLogin()}" />
+                    <input type="hidden" name="idAluno" value="${aluno.getId()}" />
+                    <p><button title="Editar" class="btn btn-info btn-xs" value="editar" name="editar"><span class="glyphicon glyphicon-pencil"></span></button> Atualizar os dados pessoais</p>
+                    <!--<button title="Remover" class="btn btn-danger btn-xs" value="remover" name="remover"><span class=" glyphicon glyphicon-remove"></span></button>-->
+                </form>
+            </c:if>
+            <c:if test="${requestScope.settings != true}">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Exercício</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <c:forEach items="${sessionScope.aluno.exercicios}" var="ex">
+                        <tr>
+                            <td>${ex.getTipo()}</td>
+                            <td>${ex.getExercicio()}</td>
+                            <td>${ex.getSerie()}x${ex.getRepeticao()} com ${ex.getPeso()}Kg</td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </c:if>
         </div>
     </div>
     <%@include file="bottom.jspf" %>
