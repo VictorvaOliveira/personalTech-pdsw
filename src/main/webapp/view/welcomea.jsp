@@ -6,6 +6,7 @@
 <body>
     <%@ include file="navbar.jspf" %>
     <script src="loginButton.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <div class="container">
         <h1>Bem vindo, ${sessionScope.user} !</h1>
         <div class="btn-group btn-group-justified">
@@ -40,6 +41,31 @@
                     </c:forEach>
                     </tbody>
                 </table>
+                
+                <div id="chart_div" style="width: 50%; height: 250px;"></div>
+                <script type="text/javascript">
+                    google.charts.load('current', {'packages': ['corechart']});
+                    google.charts.setOnLoadCallback(drawChart);
+
+                    function drawChart() {
+                        var data = google.visualization.arrayToDataTable([
+                            ['Year'    , 'Peso', 'IMC'],
+                            ['Jan/2018',    100,    35],
+                            ['Mar/2018',     70,    24],
+                            ['Jun/2018',     66,    24],
+                            ['Out/2018',     65,  23.5]
+                        ]);
+
+                        var options = {
+                            title: 'Peso/IMC',
+                            hAxis: {title: '', titleTextStyle: {color: '#333'}},
+                            vAxis: {minValue: 0}
+                        };
+
+                        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+                        chart.draw(data, options);
+                    }
+                </script>
             </c:if>
         </div>
     </div>
