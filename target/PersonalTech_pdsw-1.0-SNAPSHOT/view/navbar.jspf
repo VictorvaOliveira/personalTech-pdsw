@@ -18,7 +18,9 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li id="home"><a href="../HomeButtonController"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <c:if test="${sessionScope.aluno == null}">
                 <li id="cadastro"><a href="cadastro.jsp"><span class="glyphicon glyphicon-user"></span> Cadastro</a></li>
+                </c:if>
                 <c:if test="${sessionScope.user == null}">
                     <li id="login">
                         <a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a>
