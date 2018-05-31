@@ -2,7 +2,7 @@
 <%@ taglib prefix="c"uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="top.jspf" %>
-<title>PT|Bem-vindo</title>
+<title>AL|Bem-vindo</title>
 </head>
 <body>
     <%@ include file="navbar.jspf" %>
@@ -16,6 +16,9 @@
         </div> 
 
         <div class="well well-lg">
+            <!-- 
+                MENU PARA CONFIGURAÇÕES
+            -->
             <c:if test="${requestScope.settings == true}">
                 <form method="post" action="ActionsAluno" name="meuform">   
                     <input type="hidden" name="loginAluno" value="${aluno.getLogin()}" />
@@ -23,52 +26,65 @@
                     <p><button title="Editar" class="btn btn-info btn-xs" value="editar" name="editar"><span class="glyphicon glyphicon-pencil"></span></button> Atualizar os dados pessoais</p>
                 </form>
             </c:if>
+            <!-- 
+                LISTA DAS INFORMAÇÕES RELACIONADAS AO ALUNO
+            -->
             <c:if test="${requestScope.settings != true}">
                 <div>
                     <h4>Lista de exercícios</h4>
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Tipo</th>
-                                <th>Exercício</th>
-                                <th>Descrição</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <c:forEach items="${sessionScope.aluno.exercicios}" var="ex">
+                    <c:if test="${sessionScope.aluno.exercicios == null}">
+                        <p>Não há exercícios cadastrados para esse aluno. Entrar em contato com seu personal trainer!</p>
+                    </c:if>
+                    <c:if test="${sessionScope.aluno.exercicios != null}">    
+                        <table class="table table-bordered">
+                            <thead>
                                 <tr>
-                                    <td>${ex.getTipo()}</td>
-                                    <td>${ex.getExercicio()}</td>
-                                    <td>${ex.getSerie()} x ${ex.getRepeticao()} com ${ex.getPeso()}Kg</td>
+                                    <th>Tipo</th>
+                                    <th>Exercício</th>
+                                    <th>Descrição</th>
                                 </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${sessionScope.aluno.exercicios}" var="ex">
+                                    <tr>
+                                        <td>${ex.getTipo()}</td>
+                                        <td>${ex.getExercicio()}</td>
+                                        <td>${ex.getSerie()} x ${ex.getRepeticao()} com ${ex.getPeso()}Kg</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:if>
                 </div>
                 <div>
                     <h4>Avaliações</h4>
-                    <table class="table table-bordered">
-                        <thead>
-                        <th>Data avaliação</th>
-                        <th>Peso</th>
-                        <th>Pressão arterial</th>
-                        <th>Altura</th>
-                        </thead>
-                        <tbody>
-                            <c:forEach items="${sessionScope.aluno.avaliacoes}" var="ava">
-                                <tr>
-                                    <td><fmt:formatDate value="${ava.getDataAvaliacao()}" type="both" pattern="dd/MM/yyyy" dateStyle="full"/></td>
-                                    <td>${ava.getPeso()} Kg</td>
-                                    <td>${ava.getPressaoArtAtual()}</td>
-                                    <td>${ava.getAltura()}</td> 
-                                </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
-                </div>
-                <div>
-                    <h4>Gráfico de acompanhamento</h4>
-                    <div id="chart_div" style="width: 75%; height: 250px;"></div>
+                    <c:if test="${sessionScope.aluno.avaliacoes == null}">
+                        <p>Não foi realizada nenhuma avaliação. Entrar em contato com seu personal trainer !</p>
+                    </c:if>
+                    <c:if test="${sessionScope.aluno.avaliacoes != null}">
+                        <table class="table table-bordered">
+                            <thead>
+                            <th>Data avaliação</th>
+                            <th>Peso</th>
+                            <th>Pressão arterial</th>
+                            <th>Altura</th>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${sessionScope.aluno.avaliacoes}" var="ava">
+                                    <tr>
+                                        <td><fmt:formatDate value="${ava.getDataAvaliacao()}" type="both" pattern="dd/MM/yyyy" dateStyle="full"/></td>
+                                        <td>${ava.getPeso()} Kg</td>
+                                        <td>${ava.getPressaoArtAtual()}</td>
+                                        <td>${ava.getAltura()}</td> 
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                        <div>
+                            <h4>Gráfico de acompanhamento</h4>
+                            <div id="chart_div" style="width: 75%; height: 250px;"></div>
+                        </div>
+                    </c:if>
                 </div>
                 <script type="text/javascript">
                     google.charts.load('current', {'packages': ['corechart']});
