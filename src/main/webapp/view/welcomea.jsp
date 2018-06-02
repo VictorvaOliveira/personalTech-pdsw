@@ -9,7 +9,6 @@
     <script src="loginButton.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <div class="container">
-        <h1>Bem vindo, ${sessionScope.user} !</h1>
         <div class="btn-group btn-group-justified">
             <a href="ReturnExercicios" class="btn btn-primary"><span class="glyphicon glyphicon-th-list"></span> Informações</a>
             <a href="SettingsAluno" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span> Configurações</a>
@@ -30,18 +29,18 @@
                 LISTA DAS INFORMAÇÕES RELACIONADAS AO ALUNO
             -->
             <c:if test="${requestScope.settings != true}">
-                <div>
-                    <h4>Lista de exercícios</h4>
+                <h4>Lista de exercícios</h4>
+                <div class="table-responsive">
                     <c:if test="${sessionScope.aluno.exercicios == null}">
                         <p>Não há exercícios cadastrados para esse aluno. Entrar em contato com seu personal trainer!</p>
                     </c:if>
                     <c:if test="${sessionScope.aluno.exercicios != null}">    
-                        <table class="table table-bordered">
+                        <table class="table">
                             <thead>
                                 <tr>
                                     <th>Tipo</th>
                                     <th>Exercício</th>
-                                    <th>Descrição</th>
+                                    <th>Descrição (S x R x C)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,10 +57,10 @@
                 </div>
                 <div>
                     <h4>Avaliações</h4>
-                    <c:if test="${sessionScope.aluno.avaliacoes == null}">
+                    <c:if test="${sessionScope.aluno.avaliacoes[0] == null }">
                         <p>Não foi realizada nenhuma avaliação. Entrar em contato com seu personal trainer !</p>
                     </c:if>
-                    <c:if test="${sessionScope.aluno.avaliacoes != null}">
+                    <c:if test="${sessionScope.aluno.avaliacoes[0] != null}">
                         <table class="table table-bordered">
                             <thead>
                             <th>Data avaliação</th>
